@@ -1,0 +1,96 @@
+# ==================== Python ====================
+# Виртуальное окружение
+.venv/
+venv/
+env/
+ENV/
+
+# Python кэш
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Дистрибуция
+dist/
+build/
+*.egg-info/
+*.egg
+
+# ==================== IDE ====================
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# ==================== Тесты и отчёты ====================
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Отчёты
+*.html
+report.html
+*.xml
+test-results/
+
+# Логи
+*.log
+logs/
+
+# ==================== Секреты и конфиги ====================
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.crt
+secrets.json
+credentials.json
+
+# ==================== ОС ====================
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+
+# ==================== Данные ====================
+# Базы данных
+*.db
+*.sqlite
+*.sqlite3
+
+# Excel/CSV
+*.xlsx
+*.xls
+*.csv
+
+# ==================== Прочее ====================
+# Временные файлы
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Архивы
+*.zip
+*.tar.gz
+*.rar
