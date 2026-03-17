@@ -56,7 +56,7 @@ class CustomRequester:
             """raise ValueError(f"Unexpected status code: {response.status_code}. Expected: {expected_status}")"""
             raise RequestError(
                 f"Unexpected status code: {response.status_code}. Expected: {expected_status}",
-                response=response  # ← Сохраняем ответ для тестов
+                response=response
             )
         return response
 
