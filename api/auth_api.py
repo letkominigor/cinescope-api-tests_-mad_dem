@@ -1,5 +1,5 @@
 from custom_requester.custom_requester import CustomRequester
-from constants import LOGIN_ENDPOINT, REGISTER_ENDPOINT, BASE_URL_AUTH
+from constants.constants import LOGIN_ENDPOINT, REGISTER_ENDPOINT, BASE_URL_AUTH
 
 
 # Этот класс предназначен для работы с аутентификацией (регистрация и авторизация пользователей).
@@ -47,4 +47,4 @@ class AuthAPI(CustomRequester):
             raise KeyError("token is missing")
 
         token = response["accessToken"]
-        self._update_session_headers(**{"authorization": "Bearer" + token})
+        self._update_session_headers(**{"authorization": "Bearer " + token})

@@ -30,6 +30,7 @@ build/
 # ==================== Тесты и отчёты ====================
 # pytest
 .pytest_cache/
+.__pycache__/
 .coverage
 htmlcov/
 .tox/
