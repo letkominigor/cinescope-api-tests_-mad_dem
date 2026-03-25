@@ -5,6 +5,7 @@ from faker import Faker
 
 from api.api_manager import ApiManager
 from constants.roles import Roles
+from custom_requester.custom_requester import RequestError
 from entities.user import User
 from resources.user_creds import SuperAdminCreds
 from utils.data_generator import DataGenerator
@@ -170,6 +171,18 @@ def super_admin(user_session):
 def common_user(user_session, super_admin, creation_user_data):
     """Фикстура: обычный пользователь для тестов."""
     new_session = user_session()
+
+    #  Пытаемся создать пользователя, но игнорируем 409 (уже существует)
+    try:
+        create_response = super_admin.api.user_api.create_user(creation_user_data)
+        user_id = create_response.json()["id"]
+    except RequestError as e:
+        # Если ошибка НЕ 409 — пробрасываем дальше
+        if e.response.status_code != 409:
+            raise
+        # Если 409 — пользователь уже есть, пропускаем создание
+        user_id = None
+
     common_user = User(
         creation_user_data['email'],
         creation_user_data['password'],
@@ -177,33 +190,56 @@ def common_user(user_session, super_admin, creation_user_data):
         new_session
     )
 
-    super_admin.api.user_api.create_user(creation_user_data)
+    # Если у нас есть ID, сохраняем его для очистки
+    if user_id:
+        common_user.id = user_id
+
     common_user.api.auth_api.authenticate(common_user.creds)
-    return common_user
+
+    yield common_user
+
+    # ✅ Очистка: удаляем только если id известен
+    if hasattr(common_user, 'id') and common_user.id:
+        try:
+            super_admin.api.user_api.delete_user(common_user.id, expected_status=200)
+        except:
+            pass  # Игнорируем ошибки при удалении
 
 
 @pytest.fixture
 def admin_user(user_session, super_admin, creation_user_data):
-    """
-    Фикстура: пользователь с ролью ADMIN для тестов.
-
-    :param user_session: фабрика сессий
-    :param super_admin: супер-админ для создания пользователя
-    :param creation_user_data: данные для создания пользователя
-    :return: User объект с ролью ADMIN
-    """
+    """Фикстура: пользователь с ролью ADMIN."""
     new_session = user_session()
+
+    # Создаём и получаем ID, игнорируя 409
+    try:
+        create_response = super_admin.api.user_api.create_user(creation_user_data)
+        user_id = create_response.json()["id"]
+    except RequestError as e:
+        if e.response.status_code != 409:
+            raise
+        user_id = None
+
     admin_user = User(
         creation_user_data['email'],
         creation_user_data['password'],
-        [Roles.ADMIN.value],  # ← Роль ADMIN, не SUPER_ADMIN
+        [Roles.ADMIN.value],
         new_session
     )
 
-    super_admin.api.user_api.create_user(creation_user_data)
-    admin_user.api.auth_api.authenticate(admin_user.creds)
-    return admin_user
+    if user_id:
+        admin_user.id = user_id
 
+    admin_user.api.auth_api.authenticate(admin_user.creds)
+
+    yield admin_user
+
+    # Очистка
+    if hasattr(admin_user, 'id') and admin_user.id:
+        try:
+            super_admin.api.user_api.delete_user(admin_user.id, expected_status=200)
+        except:
+            pass
 
 @pytest.fixture
 def user_session():

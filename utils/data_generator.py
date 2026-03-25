@@ -41,24 +41,27 @@ class DataGenerator:
 
         return ''.join(password)
 
+    # utils/data_generator.py
+
     @staticmethod
-    def generate_movie_data(name=None, location=None, published=None):
+    def generate_movie_data(name=None, location=None, published=None, genre_id=None, price=None):
         """
         Генерация валидных данных для фильма.
 
-        :param name: Название фильма (опционально)
-        :param location: Локация показа (MSK или SPB)
-        :param published: Статус публикации (True/False)
-        :return: dict с данными фильма
+        :param name: Название фильма
+        :param location: Локация (MSK или SPB)
+        :param published: Статус публикации
+        :param genre_id: Жанр (1-4)
+        :param price: Цена фильма
         """
         return {
             "name": name or f"Movie {faker.word().title()} {random.randint(1000, 9999)}",
-            "price": random.randint(100, 5000),
+            "price": price if price is not None else random.randint(100, 2000),
             "description": faker.sentence(nb_words=10),
             "imageUrl": f"https://picsum.photos/seed/{random.randint(1, 9999)}/400/600",
             "location": location or random.choice(["MSK", "SPB"]),
             "published": published if published is not None else random.choice([True, False]),
-            "genreId": random.randint(1, 4),
+            "genreId": genre_id if genre_id is not None else random.randint(1, 4)
         }
 
     @staticmethod
