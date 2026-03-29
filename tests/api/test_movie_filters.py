@@ -65,27 +65,22 @@ class TestMovieFilters:
 
     def test_filter_by_location_with_created_film(self, admin_session: ApiManager):
         """
-        Фильтрация по локации с созданием тестового фильма
-
-        Созданный фильм с указанной локацией
-        существует и имеет правильную локацию
+        Тест: фильтрация по локации.
+        Проверяем, что созданный фильм существует и имеет правильную локацию.
         """
         unique_location = "MSK"
-        movie_data = DataGenerator.generate_movie_data(location=unique_location)
 
-        # Создаём фильм
+        movie_data = DataGenerator.generate_movie_data(location=unique_location)
         create_response = admin_session.movies_api.create_movie(movie_data)
         movie_id = create_response.json()["id"]
 
         try:
-            # Проверяем через GET by ID (гарантированно найдёт)
             response = admin_session.movies_api.get_movie_by_id(
                 movie_id,
                 expected_status=200
             )
             response_data = response.json()
 
-            # Проверяем, что локация совпадает
             assert response_data["location"] == unique_location, (
                 f"Фильм {movie_id} имеет локацию '{response_data['location']}', "
                 f"ожидалось '{unique_location}'"
@@ -97,8 +92,6 @@ class TestMovieFilters:
     def test_combined_filters(self, admin_session: ApiManager, api_manager):
         """
         Комбинация нескольких фильтров
-
-        Проверяет работу комбинации price + genreId.
         """
         filter_params = {
             "minPrice": 1,

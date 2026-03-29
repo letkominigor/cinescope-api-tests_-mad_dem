@@ -41,7 +41,22 @@ class DataGenerator:
 
         return ''.join(password)
 
-    # utils/data_generator.py
+    @staticmethod
+    def generate_user_data(role="USER"): #генерируем данные для юзера (для корректного использования фильтров)
+        """
+        Генерация данных пользователя.
+        :param role: Роль пользователя (USER, ADMIN, SUPER_ADMIN)
+        :return: dict с данными пользователя
+        """
+        return {
+            "email": DataGenerator.generate_random_email(),
+            "fullName": DataGenerator.generate_random_name(),
+            "password": DataGenerator.generate_random_password(),
+            "passwordRepeat": DataGenerator.generate_random_password(),
+            "roles": [role],
+            "verified": True,
+            "banned": False
+        }
 
     @staticmethod
     def generate_movie_data(name=None, location=None, published=None, genre_id=None, price=None):

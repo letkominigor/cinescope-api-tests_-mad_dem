@@ -168,71 +168,63 @@ def super_admin(user_session):
 
 
 @pytest.fixture
-def common_user(user_session, super_admin, creation_user_data):
-    """Фикстура: обычный пользователь для тестов."""
+def common_user(user_session, super_admin):
+    """
+    Фикстура: обычный пользователь для тестов.
+     Генерирует УНИКАЛЬНЫЕ данные каждый раз!
+    """
     new_session = user_session()
 
-    #  Пытаемся создать пользователя, но игнорируем 409 (уже существует)
-    try:
-        create_response = super_admin.api.user_api.create_user(creation_user_data)
-        user_id = create_response.json()["id"]
-    except RequestError as e:
-        # Если ошибка НЕ 409 — пробрасываем дальше
-        if e.response.status_code != 409:
-            raise
-        # Если 409 — пользователь уже есть, пропускаем создание
-        user_id = None
+    # Генерируем уникальные данные прямо здесь
+    user_data = DataGenerator.generate_user_data(role="USER")
 
     common_user = User(
-        creation_user_data['email'],
-        creation_user_data['password'],
+        user_data['email'],
+        user_data['password'],
         [Roles.USER.value],
         new_session
     )
 
-    # Если у нас есть ID, сохраняем его для очистки
-    if user_id:
-        common_user.id = user_id
-
+    # Создаём пользователя через супер-админа
+    super_admin.api.user_api.create_user(user_data)
     common_user.api.auth_api.authenticate(common_user.creds)
 
     yield common_user
 
-    # ✅ Очистка: удаляем только если id известен
-    if hasattr(common_user, 'id') and common_user.id:
-        try:
-            super_admin.api.user_api.delete_user(common_user.id, expected_status=200)
-        except:
-            pass  # Игнорируем ошибки при удалении
+    try:
+        super_admin.api.user_api.delete_user(common_user.id, expected_status=200)
+    except:
+        pass
 
 
 @pytest.fixture
-def admin_user(user_session, super_admin, creation_user_data):
-    """Фикстура: пользователь с ролью ADMIN."""
+def admin_user(user_session, super_admin):
+    """
+    Фикстура пользователь с ролью ADMIN.
+    Генерирует УНИКАЛЬНЫЕ данные каждый раз!
+    """
     new_session = user_session()
 
-    # Создаём и получаем ID, игнорируя 409
-    try:
-        create_response = super_admin.api.user_api.create_user(creation_user_data)
-        user_id = create_response.json()["id"]
-    except RequestError as e:
-        if e.response.status_code != 409:
-            raise
-        user_id = None
+    # Генерируем уникальные данные прямо здесь
+    user_data = DataGenerator.generate_user_data(role="ADMIN")
 
     admin_user = User(
-        creation_user_data['email'],
-        creation_user_data['password'],
+        user_data['email'],
+        user_data['password'],
         [Roles.ADMIN.value],
         new_session
     )
 
-    if user_id:
-        admin_user.id = user_id
-
+    # Создаём пользователя через супер-админа
+    super_admin.api.user_api.create_user(user_data)
     admin_user.api.auth_api.authenticate(admin_user.creds)
 
     yield admin_user
+
+    try:
+        super_admin.api.user_api.delete_user(admin_user.id, expected_status=200)
+    except:
+        pass
 
     # Очистка
     if hasattr(admin_user, 'id') and admin_user.id:

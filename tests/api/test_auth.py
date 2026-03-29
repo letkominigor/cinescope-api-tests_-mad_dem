@@ -20,7 +20,6 @@ class TestAuthAPI:
             "email": registered_user["email"],
             "password": registered_user["password"]
         }
-        # Вызов метода авторизации через AuthAPI
         response = api_manager.auth_api.login_user(login_data)
         response_data = response.json()
 
