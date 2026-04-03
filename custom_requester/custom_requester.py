@@ -1,6 +1,9 @@
 import json
 import logging
 import os
+from urllib.parse import urlencode
+from pydantic import BaseModel
+from constants.constants import GREEN, RESET, RED
 
 
 class RequestError(ValueError):
@@ -27,25 +30,29 @@ class CustomRequester:
         self.session = session
         self.base_url = base_url
         self.headers = self.base_headers.copy()
+        self._update_session_headers(**self.headers)
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
 
     def send_request(self, method, endpoint, data=None, expected_status=200, need_logging=True, params=None):
         """
         Универсальный метод для отправки запросов.
-        :param params:
-        :param method: HTTP метод (GET, POST, PUT, DELETE и т.д.).
-        :param endpoint: Эндпоинт (например, "/login").
-        :param data: Тело запроса (JSON-данные).
-        :param expected_status: Ожидаемый статус-код (по умолчанию 200).
-        :param need_logging: Флаг для логирования (по умолчанию True).
-        :return: Объект ответа requests.Response.
+
+        :param method: HTTP метод (GET, POST, PUT, DELETE)
+        :param endpoint: Эндпоинт (например, "/login")
+        :param data: Тело запроса (JSON-данные или Pydantic модель)
+        :param expected_status: Ожидаемый статус-код (по умолчанию 200)
+        :param need_logging: Флаг для логирования (по умолчанию True)
+        :param params: dict с query-параметрами (для GET-запросов)
+        :return: requests.Response объект
         """
         url = f"{self.base_url}{endpoint}"
         if params:
-            from urllib.parse import urlencode
             query_string = urlencode(params)
             url = f"{url}?{query_string}"
+
+        if isinstance(data, BaseModel):
+            data = json.loads(data.model_dump_json(exclude_unset=True))
 
         response = self.session.request(method, url, json=data, headers=self.headers)
 
@@ -62,13 +69,13 @@ class CustomRequester:
 
     def log_request_and_response(self, response):
         """
-        Кастомный реквестер для стандартизации и упрощения отправки HTTP-запросов.
+        Логгирование запросов и ответов. Настройки логгирования описаны в pytest.ini
+        Преобразует вывод в curl-like (-H хэдэеры), (-d тело)
+
+        :param response: Объект response получаемый из метода "send_request"
         """
         try:
             request = response.request
-            GREEN = '\033[32m'
-            RED = '\033[31m'
-            RESET = '\033[0m'
             headers = " \\\n".join([f"-H '{header}: {value}'" for header, value in request.headers.items()])
             full_test_name = f"pytest {os.environ.get('PYTEST_CURRENT_TEST', '').replace(' (call)', '')}"
 
@@ -76,9 +83,10 @@ class CustomRequester:
             if hasattr(request, 'body') and request.body is not None:
                 if isinstance(request.body, bytes):
                     body = request.body.decode('utf-8')
+                elif isinstance(request.body, str):
+                    body = request.body
                 body = f"-d '{body}' \n" if body != '{}' else ''
 
-            self.logger.info(f"\n{'=' * 40} REQUEST {'=' * 40}")
             self.logger.info(
                 f"{GREEN}{full_test_name}{RESET}\n"
                 f"curl -X {request.method} '{request.url}' \\\n"
@@ -86,31 +94,20 @@ class CustomRequester:
                 f"{body}"
             )
 
+            response_status = response.status_code
+            is_success = response.ok
             response_data = response.text
-            try:
-                response_data = json.dumps(json.loads(response.text), indent=4, ensure_ascii=False)
-            except json.JSONDecodeError:
-                pass
-
-            self.logger.info(f"\n{'=' * 40} RESPONSE {'=' * 40}")
-            if not response.ok:
-                self.logger.info(
-                    f"\tSTATUS_CODE: {RED}{response.status_code}{RESET}\n"
-                    f"\tDATA: {RED}{response_data}{RESET}"
-                )
-            else:
-                self.logger.info(
-                    f"\tSTATUS_CODE: {GREEN}{response.status_code}{RESET}\n"
-                    f"\tDATA:\n{response_data}"
-                )
-            self.logger.info(f"{'=' * 80}\n")
+            if not is_success:
+                self.logger.info(f"\tRESPONSE:"
+                                 f"\nSTATUS_CODE: {RED}{response_status}{RESET}"
+                                 f"\nDATA: {RED}{response_data}{RESET}")
         except Exception as e:
-            self.logger.error(f"\nLogging failed: {type(e)} - {e}")
+            self.logger.info(f"\nLogging went wrong: {type(e)} - {e}")
 
     def _update_session_headers(self, **kwargs):
         """
         Обновление заголовков сессии.
-        :param session: Объект requests.Session, предоставленный API-классом.
-        :param kwargs: Дополнительные заголовки.
+
+        :param kwargs: Дополнительные заголовки
         """
         self.session.headers.update(kwargs)  # Обновляем заголовки в текущей сессии

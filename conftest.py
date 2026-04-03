@@ -5,39 +5,41 @@ from faker import Faker
 
 from api.api_manager import ApiManager
 from constants.roles import Roles
-from custom_requester.custom_requester import RequestError
 from entities.user import User
+from models.base_models import TestUser
+
 from resources.user_creds import SuperAdminCreds
+
 from utils.data_generator import DataGenerator
 
 faker = Faker()
 
 
-@pytest.fixture(scope="function")
-def test_user():
-    random_password = DataGenerator.generate_random_password()
+@pytest.fixture
+def test_user() -> TestUser:
+    """Фикстура: базовые данные пользователя как модель"""
+    password = DataGenerator.generate_random_password()
+    return TestUser(
+        email=DataGenerator.generate_random_email(),
+        fullName=DataGenerator.generate_random_name(),
+        password=password,
+        passwordRepeat=password,
+        roles=[Roles.USER]  # Pydantic сам конвертирует в значение благодаря use_enum_values=True
+    )
 
-    return {
-        "email": DataGenerator.generate_random_email(),
-        "fullName": DataGenerator.generate_random_name(),
-        "password": random_password,
-        "passwordRepeat": random_password,
-        "roles": [Roles.USER.value]
-    }
 
+"""@pytest.fixture(scope="function")
+def creation_user_data(test_user: TestUser):
 
+    updated_data = test_user.model_dump()
+    updated_data.update({
+        "verified": True,
+        "banned": False
+    })
+    return updated_data"""
 @pytest.fixture(scope="function")
 def creation_user_data(test_user):
-    """
-    Фикстура: данные пользователя для создания (до регистрации).
-
-    Добавляет поля verified и banned, которые обычно возвращает сервер
-    после успешной регистрации.
-
-    :param test_user: базовые данные пользователя
-    :return: dict с полными данными пользователя
-    """
-    updated_data = test_user.copy()
+    updated_data = test_user.model_dump()  # ← вместо .copy()
     updated_data.update({
         "verified": True,
         "banned": False
@@ -46,20 +48,12 @@ def creation_user_data(test_user):
 
 
 @pytest.fixture(scope="function")
-def registered_user(api_manager, test_user):
-    """
-    Фикстура для регистрации и получения данных пользователя.
-
-    :param api_manager: ApiManager экземпляр
-    :param test_user: данные для регистрации
-    :return: dict с данными зарегистрированного пользователя
-    """
-    response = api_manager.auth_api.register_user(user_data=test_user)
+def registered_user(api_manager, test_user: TestUser) -> TestUser:
+    response = api_manager.auth_api.register_user(user_data=test_user.model_dump())
     response_data = response.json()
-    registered_user = test_user.copy()
-    registered_user["id"] = response_data["id"]
-    return registered_user
 
+    # Создаём копию модели с обновлённым id
+    return test_user.model_copy(update={"id": response_data["id"]})
 
 @pytest.fixture(scope="session")
 def session():
@@ -174,8 +168,6 @@ def common_user(user_session, super_admin):
      Генерирует УНИКАЛЬНЫЕ данные каждый раз!
     """
     new_session = user_session()
-
-    # Генерируем уникальные данные прямо здесь
     user_data = DataGenerator.generate_user_data(role="USER")
 
     common_user = User(
@@ -185,16 +177,18 @@ def common_user(user_session, super_admin):
         new_session
     )
 
-    # Создаём пользователя через супер-админа
-    super_admin.api.user_api.create_user(user_data)
+    create_response = super_admin.api.user_api.create_user(user_data)
+    common_user.id = create_response.json()["id"]  # ← Сохраняем ID!
+
     common_user.api.auth_api.authenticate(common_user.creds)
 
     yield common_user
 
-    try:
-        super_admin.api.user_api.delete_user(common_user.id, expected_status=200)
-    except:
-        pass
+    if hasattr(common_user, 'id') and common_user.id:
+        try:
+            super_admin.api.user_api.delete_user(common_user.id, expected_status=200)
+        except:
+            pass
 
 
 @pytest.fixture
@@ -215,18 +209,13 @@ def admin_user(user_session, super_admin):
         new_session
     )
 
-    # Создаём пользователя через супер-админа
-    super_admin.api.user_api.create_user(user_data)
+    create_response = super_admin.api.user_api.create_user(user_data)
+    admin_user.id = create_response.json()["id"]
+
     admin_user.api.auth_api.authenticate(admin_user.creds)
 
     yield admin_user
 
-    try:
-        super_admin.api.user_api.delete_user(admin_user.id, expected_status=200)
-    except:
-        pass
-
-    # Очистка
     if hasattr(admin_user, 'id') and admin_user.id:
         try:
             super_admin.api.user_api.delete_user(admin_user.id, expected_status=200)
@@ -248,3 +237,21 @@ def user_session():
 
     for user in user_pool:
         user.close_session()
+
+"""@pytest.fixture
+def registration_user_data():
+    random_password = DataGenerator.generate_random_password()
+
+    return {
+        "email": DataGenerator.generate_random_email(),
+        "fullName": DataGenerator.generate_random_name(),
+        "password": random_password,
+        "passwordRepeat": random_password,
+        "roles": [Roles.USER.value]
+    }"""
+@pytest.fixture
+def registration_user_data(test_user: TestUser) -> dict:
+    """Фикстура: данные для регистрации в JSON-формате"""
+    # model_dump(mode='json') корректно сериализует Enum
+    return test_user.model_dump(mode='json', exclude_unset=True)
+

@@ -12,8 +12,8 @@ class TestAuthNegative:
         Ожидается: 401 или 500 + сообщение об ошибке
         """
         login_data = {
-            "email": registered_user["email"],
-            "password": "WrongPassword123!"  # Неверный пароль
+            "email": registered_user.email,
+            "password": "WrongPassword123!"
         }
 
         with pytest.raises(RequestError) as exc_info:
@@ -70,7 +70,7 @@ class TestAuthNegative:
         """Тест: авторизация с пустым email."""
         login_data = {
             "email": "",
-            "password": registered_user["password"]
+            "password": registered_user.password
         }
 
         with pytest.raises(RequestError) as exc_info:
@@ -82,7 +82,7 @@ class TestAuthNegative:
     def test_login_with_empty_password(self, api_manager: ApiManager, registered_user):
         """Тест: авторизация с пустым паролем."""
         login_data = {
-            "email": registered_user["email"],
+            "email": registered_user.email,
             "password": ""
         }
 

@@ -34,7 +34,6 @@ class TestMovieDeleteByRole:
         """
         Тест: удаление фильма пользователями с разными ролями.
         """
-        # Выбираем пользователя по роли
         user_map = {
             "SUPER_ADMIN": super_admin,
             "ADMIN": admin_user,
@@ -42,7 +41,6 @@ class TestMovieDeleteByRole:
         }
         current_user = user_map[user_role]
 
-        # Создаём фильм через супер_админа
         movie_data = DataGenerator.generate_movie_data()
         create_response = super_admin.api.movies_api.create_movie(
             movie_data,
@@ -52,14 +50,12 @@ class TestMovieDeleteByRole:
 
         try:
             if should_succeed:
-                # SUPER_ADMIN: удаление должно пройти успешно
                 delete_response = current_user.api.movies_api.delete_movie(
                     movie_id,
                     expected_status=expected_status
                 )
                 assert delete_response.status_code == expected_status
 
-                # Проверяем, что фильм действительно удалён
                 with pytest.raises(RequestError) as exc_info:
                     super_admin.api.movies_api.get_movie_by_id(
                         movie_id,
@@ -75,14 +71,12 @@ class TestMovieDeleteByRole:
                         expected_status=200
                     )
 
-                # Проверяем, что получили 403
                 assert exc_info.value.response.status_code == expected_status, (
                     f"Ожидали {expected_status} для роли {user_role}, "
                     f"получили {exc_info.value.response.status_code}"
                 )
 
         finally:
-            # Если фильм не был удалён, удаляем через супер_админа
             if not should_succeed:
                 super_admin.api.movies_api.delete_movie(
                     movie_id,

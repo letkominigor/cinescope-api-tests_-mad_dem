@@ -19,40 +19,45 @@ class DataGenerator:
         """Генерация случайного имени."""
         return f"{faker.first_name()} {faker.last_name()}"
 
-    @staticmethod
-    def generate_random_password():
-        """
-        Генерация пароля, соответствующего требованиям:
-        - Минимум 1 буква.
-        - Минимум 1 цифра.
-        - Допустимые символы.
-        - Длина от 8 до 20 символов.
-        """
-        letters = random.choice(string.ascii_letters)
-        digits = random.choice(string.digits)
-
-        special_chars = "?@#$%^&*|:"
-        all_chars = string.ascii_letters + string.digits + special_chars
-        remaining_length = random.randint(6, 18)
-        remaining_chars = ''.join(random.choices(all_chars, k=remaining_length))
-
-        password = list(letters + digits + remaining_chars)
-        random.shuffle(password)
-
-        return ''.join(password)
+    # utils/data_generator.py
 
     @staticmethod
-    def generate_user_data(role="USER"): #генерируем данные для юзера (для корректного использования фильтров)
+    def generate_random_password(length=12):
         """
-        Генерация данных пользователя.
-        :param role: Роль пользователя (USER, ADMIN, SUPER_ADMIN)
-        :return: dict с данными пользователя
+        Генерирует случайный пароль, соответствующий требованиям валидации:
+        - хотя бы одна строчная буква
+        - хотя бы одна заглавная буква
+        - хотя бы одна цифра
+        - хотя бы один спецсимвол
         """
+        import string
+        import random
+
+        password_chars = [
+            random.choice(string.ascii_lowercase),
+            random.choice(string.ascii_uppercase),
+            random.choice(string.digits),
+            random.choice("?@#$%^&*|:")
+        ]
+
+        # Все допустимые символы для заполнения
+        all_chars = string.ascii_letters + string.digits + "?@#$%^&*|:"
+
+        password_chars += [random.choice(all_chars) for _ in range(length - 4)]
+
+        # Перемешиваем, чтобы обязательные символы не были в начале
+        random.shuffle(password_chars)
+
+        return ''.join(password_chars)
+
+    @staticmethod
+    def generate_user_data(role="USER"):
+        password = DataGenerator.generate_random_password()
         return {
             "email": DataGenerator.generate_random_email(),
             "fullName": DataGenerator.generate_random_name(),
-            "password": DataGenerator.generate_random_password(),
-            "passwordRepeat": DataGenerator.generate_random_password(),
+            "password": password,
+            "passwordRepeat": password,
             "roles": [role],
             "verified": True,
             "banned": False
