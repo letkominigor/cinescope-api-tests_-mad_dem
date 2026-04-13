@@ -1,0 +1,7 @@
+2026-04-12 13:16:53 INFO [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_genre_id[genre_3][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?genreId=3' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \

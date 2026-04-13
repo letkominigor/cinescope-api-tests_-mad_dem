@@ -1,0 +1,31 @@
+2026-04-12 11:29:27 INFO [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTgyNTY1LCJleHAiOjE3NzU5ODQzNjV9.bZs4DlK24rIBBItYBd3nPN-zwd0uXMVKRPzFYF-jWAo' \
+-H 'Cookie: refresh_token=4607f46b-af3c-410f-bbb8-98fa7631f41e' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-12 11:29:27 INFO [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTgyNTY2LCJleHAiOjE3NzU5ODQzNjZ9.JRKCMOciNafmgeXQvK8diuGHF4QbFUic80cX7shWBl0' \
+-H 'Content-Length: 215' \
+-d '{"name": "Movie Anything 6189", "price": 128, "description": "Pretty whose fear health herself hear store.", "imageUrl": "https://picsum.photos/seed/9463/400/600", "location": "MSK", "published": true, "genreId": 4}' 
+
+2026-04-12 11:29:27 INFO [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/33793' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTgyNTY2LCJleHAiOjE3NzU5ODQzNjZ9.JRKCMOciNafmgeXQvK8diuGHF4QbFUic80cX7shWBl0' \
+-H 'Content-Length: 0' \

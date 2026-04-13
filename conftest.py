@@ -1,19 +1,25 @@
 """Фикстуры для тестов."""
+import time
+from typing import Generator
+
 import pytest
 import requests
 from faker import Faker
-
+from sqlalchemy.orm import Session
 from api.api_manager import ApiManager
 from constants.roles import Roles
+from db_requester import DBClient
 from entities.user import User
 from models.base_models import TestUser
-
 from resources.user_creds import SuperAdminCreds
-
 from utils.data_generator import DataGenerator
 
 faker = Faker()
 
+@pytest.fixture #была добавлена в файл conftest.py
+def delay_between_retries():
+    time.sleep(2)
+    yield
 
 @pytest.fixture
 def test_user() -> TestUser:
@@ -24,22 +30,12 @@ def test_user() -> TestUser:
         fullName=DataGenerator.generate_random_name(),
         password=password,
         passwordRepeat=password,
-        roles=[Roles.USER]  # Pydantic сам конвертирует в значение благодаря use_enum_values=True
+        roles=[Roles.USER]
     )
 
-
-"""@pytest.fixture(scope="function")
-def creation_user_data(test_user: TestUser):
-
-    updated_data = test_user.model_dump()
-    updated_data.update({
-        "verified": True,
-        "banned": False
-    })
-    return updated_data"""
 @pytest.fixture(scope="function")
 def creation_user_data(test_user):
-    updated_data = test_user.model_dump()  # ← вместо .copy()
+    updated_data = test_user.model_dump()
     updated_data.update({
         "verified": True,
         "banned": False
@@ -52,7 +48,6 @@ def registered_user(api_manager, test_user: TestUser) -> TestUser:
     response = api_manager.auth_api.register_user(user_data=test_user.model_dump())
     response_data = response.json()
 
-    # Создаём копию модели с обновлённым id
     return test_user.model_copy(update={"id": response_data["id"]})
 
 @pytest.fixture(scope="session")
@@ -156,17 +151,13 @@ def super_admin(user_session):
         [Roles.SUPER_ADMIN.value],
         new_session
     )
-
     super_admin.api.auth_api.authenticate(super_admin.creds)
     return super_admin
 
 
 @pytest.fixture
 def common_user(user_session, super_admin):
-    """
-    Фикстура: обычный пользователь для тестов.
-     Генерирует УНИКАЛЬНЫЕ данные каждый раз!
-    """
+    """Фикстура: обычный пользователь для тестов."""
     new_session = user_session()
     user_data = DataGenerator.generate_user_data(role="USER")
 
@@ -178,8 +169,7 @@ def common_user(user_session, super_admin):
     )
 
     create_response = super_admin.api.user_api.create_user(user_data)
-    common_user.id = create_response.json()["id"]  # ← Сохраняем ID!
-
+    common_user.id = create_response.json()["id"]
     common_user.api.auth_api.authenticate(common_user.creds)
 
     yield common_user
@@ -238,20 +228,17 @@ def user_session():
     for user in user_pool:
         user.close_session()
 
-"""@pytest.fixture
-def registration_user_data():
-    random_password = DataGenerator.generate_random_password()
-
-    return {
-        "email": DataGenerator.generate_random_email(),
-        "fullName": DataGenerator.generate_random_name(),
-        "password": random_password,
-        "passwordRepeat": random_password,
-        "roles": [Roles.USER.value]
-    }"""
 @pytest.fixture
 def registration_user_data(test_user: TestUser) -> dict:
     """Фикстура: данные для регистрации в JSON-формате"""
-    # model_dump(mode='json') корректно сериализует Enum
     return test_user.model_dump(mode='json', exclude_unset=True)
+
+@pytest.fixture(scope="function")
+def db_session() -> Generator[Session, None, None]:
+    """
+    Фикстура для работы с БД (использует DBClient).
+    """
+    db_client = DBClient()
+    with db_client.get_session() as session:
+        yield session
 

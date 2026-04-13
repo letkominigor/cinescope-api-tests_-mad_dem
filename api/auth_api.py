@@ -2,8 +2,8 @@ from custom_requester.custom_requester import CustomRequester
 from constants.constants import LOGIN_ENDPOINT, REGISTER_ENDPOINT, BASE_URL_AUTH
 
 
-# Этот класс предназначен для работы с аутентификацией (регистрация и авторизация пользователей).
 class AuthAPI(CustomRequester):
+    """Класс для для работы с аутентификацией (регистрация и авторизация пользователей)"""
     def __init__(self, session):
         super().__init__(
             session=session,

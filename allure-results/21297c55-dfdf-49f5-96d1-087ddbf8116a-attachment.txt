@@ -1,0 +1,22 @@
+2026-04-12 13:03:37 INFO [32mpytest tests/api/test_auth_negative.py::TestAuthNegative::test_login_with_empty_email (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 180' \
+-d '{"email": "kekz0j4zrb2@gmail.com", "fullName": "Mackenzie Perez", "password": "KANm&RyBD6H7", "passwordRepeat": "KANm&RyBD6H7", "roles": ["USER"], "verified": null, "banned": null}'
+2026-04-12 13:03:37 INFO [32mpytest tests/api/test_auth_negative.py::TestAuthNegative::test_login_with_empty_email[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 41' \
+-d '{"email": "", "password": "KANm&RyBD6H7"}' 
+
+2026-04-12 13:03:37 INFO 	RESPONSE:
+STATUS_CODE: [31m401[0m
+DATA: [31m{"message":"Неверный логин или пароль","error":"Unauthorized","statusCode":401}[0m

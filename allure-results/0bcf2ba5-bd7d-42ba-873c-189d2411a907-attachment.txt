@@ -1,0 +1,25 @@
+2026-04-08 20:23:12 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_with_invalid_data[name] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.32.5' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1NjY4OTkzLCJleHAiOjE3NzU2NzA3OTN9.G9VclcxOt0Sv2P7iN8GXGldZwMeKFQV7XXCMPXqaXow' \
+-H 'Cookie: refresh_token=24f187c5-9b25-4d31-b984-c9892daf49e2' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-08 20:23:12 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_with_invalid_data[name][0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.32.5' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1NjY4OTk0LCJleHAiOjE3NzU2NzA3OTR9.p8zfjtNEeAy2FIqcCEMWtBB2hVUr-AjPujYMI_HkOjc' \
+-H 'Content-Length: 219' \
+-d '{"name": "", "price": 806, "description": "From left station will miss message meeting style window computer.", "imageUrl": "https://picsum.photos/seed/3021/400/600", "location": "MSK", "published": false, "genreId": 1}' 
+
+2026-04-08 20:23:12 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{"message":["name should not be empty"],"error":"Bad Request","statusCode":400}[0m

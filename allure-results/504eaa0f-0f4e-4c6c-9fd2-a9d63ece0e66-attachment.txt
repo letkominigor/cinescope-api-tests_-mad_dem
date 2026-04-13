@@ -1,0 +1,9 @@
+2026-04-12 14:20:58 INFO [32mpytest tests/api/test_movie_delete.py::TestMovieDeleteWithDB::test_delete_movie_by_super_admin (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'

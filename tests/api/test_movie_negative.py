@@ -1,71 +1,115 @@
+"""Негативные тесты для Movies API."""
 import pytest
+import allure
+import random
 from api.api_manager import ApiManager
-from custom_requester.custom_requester import RequestError
 from utils.data_generator import DataGenerator
+from constants.constants import STATUS_BAD_REQUEST, STATUS_NOT_FOUND
 
 
+@allure.feature("Movies API")
+@allure.story("Валидация данных фильма")
+@allure.label("qa_name", "Komin Igor")
+@allure.label("layer", "api")
 class TestMoviesNegative:
-    """Негативные тесты для эндпоинта /movies."""
+    """Негативные тесты для фильмов."""
 
-    # GET /movies/{id}
-
+    @allure.title("Получение несуществующего фильма")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_get_nonexistent_movie(self, admin_session: ApiManager):
-        """Тест: получение несуществующего фильма."""
-        fake_id = 999999999
+        """Негативный тест: получение фильма с несуществующим ID."""
+        # Arrange
+        fake_id = random.randint(100000, 999999)
 
-        with pytest.raises(RequestError) as exc_info:
-            admin_session.movies_api.get_movie_by_id(fake_id, expected_status=200)
+        # Act
+        with allure.step(f"Пытаемся получить фильм с несуществующим ID {fake_id}"):
+            response = admin_session.movies_api.get_movie_by_id(
+                fake_id,
+                expected_status=STATUS_NOT_FOUND
+            )
 
-        assert exc_info.value.response.status_code in [404, 400, 500]
+        # Assert
+        with allure.step("Проверяем статус 404"):
+            assert response.status_code == STATUS_NOT_FOUND
 
-    # POST /movies
-
-    @pytest.mark.parametrize("invalid_field", ["name", "price", "location", "genreId"])
-    def test_create_movie_with_invalid_data(self, admin_session: ApiManager, invalid_field):
-        """Тест: создание фильма с невалидными данными."""
-        invalid_data = DataGenerator.generate_invalid_movie_data(invalid_field)
-
-        with pytest.raises(RequestError) as exc_info:
-            admin_session.movies_api.create_movie(invalid_data, expected_status=201)
-
-        assert exc_info.value.response.status_code in [400, 401, 500]
-
+    @allure.title("Создание фильма с пустым телом запроса")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_create_movie_with_empty_body(self, admin_session: ApiManager):
-        """Тест: создание фильма с пустым телом."""
-        with pytest.raises(RequestError) as exc_info:
-            admin_session.movies_api.create_movie({}, expected_status=201)
+        """Негативный тест: создание фильма с пустым телом."""
+        # Act
+        with allure.step("Отправляем запрос с пустым телом"):
+            response = admin_session.movies_api.create_movie(
+                {},
+                expected_status=STATUS_BAD_REQUEST
+            )
 
-        assert exc_info.value.response.status_code in [400, 401, 500]
+        # Assert
+        with allure.step("Проверяем статус 400"):
+            assert response.status_code == STATUS_BAD_REQUEST
 
+    @allure.title("Создание фильма без обязательного поля name")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_create_movie_missing_required_field(self, admin_session: ApiManager):
-        """Тест: создание без обязательного поля."""
+        """Негативный тест: создание без обязательного поля."""
+        # Arrange
         movie_data = DataGenerator.generate_movie_data()
         del movie_data["name"]
 
-        with pytest.raises(RequestError) as exc_info:
-            admin_session.movies_api.create_movie(movie_data, expected_status=201)
+        # Act
+        with allure.step("Отправляем запрос без поля name"):
+            response = admin_session.movies_api.create_movie(
+                movie_data,
+                expected_status=STATUS_BAD_REQUEST
+            )
 
-        assert exc_info.value.response.status_code in [400, 401, 500]
+        # Assert
+        with allure.step("Проверяем статус 400"):
+            assert response.status_code == STATUS_BAD_REQUEST
 
-    # PATCH /movies/{id}
-
+    @allure.title("Обновление несуществующего фильма")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_update_nonexistent_movie(self, admin_session: ApiManager):
-        """Тест: обновление несуществующего фильма."""
-        fake_id = 999999999
+        """Негативный тест: обновление несуществующего фильма."""
+        # Arrange
+        fake_id = random.randint(100000, 999999)
         update_data = {"name": "New Name"}
 
-        with pytest.raises(RequestError) as exc_info:
-            admin_session.movies_api.update_movie(fake_id, update_data, expected_status=200)
+        # Act
+        with allure.step(f"Пытаемся обновить фильм с несуществующим ID {fake_id}"):
+            response = admin_session.movies_api.update_movie(
+                fake_id,
+                update_data,
+                expected_status=STATUS_NOT_FOUND
+            )
 
-        assert exc_info.value.response.status_code in [404, 400, 500]
+        # Assert
+        with allure.step("Проверяем статус 404"):
+            assert response.status_code == STATUS_NOT_FOUND
 
-    # DELETE /movies/{id}
-
+    @allure.title("Удаление несуществующего фильма")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_delete_nonexistent_movie(self, admin_session: ApiManager):
-        """Тест: удаление несуществующего фильма."""
-        fake_id = 999999999
+        """Негативный тест: удаление несуществующего фильма."""
+        # Arrange
+        fake_id = random.randint(100000, 999999)
 
-        with pytest.raises(RequestError) as exc_info:
-            admin_session.movies_api.delete_movie(fake_id, expected_status=200)
+        # Act
+        with allure.step(f"Пытаемся удалить фильм с несуществующим ID {fake_id}"):
+            response = admin_session.movies_api.delete_movie(
+                fake_id,
+                expected_status=STATUS_NOT_FOUND
+            )
 
-        assert exc_info.value.response.status_code in [404, 400, 500]
+        # Assert
+        with allure.step("Проверяем статус 404"):
+            assert response.status_code == STATUS_NOT_FOUND

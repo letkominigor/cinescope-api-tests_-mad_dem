@@ -6,6 +6,9 @@ from constants.roles import Roles
 
 
 class TestUser(BaseModel):
+
+    __test__ = False #что бы не просил init
+
     email: str
     fullName: str
     password: str
@@ -15,13 +18,12 @@ class TestUser(BaseModel):
     banned: Optional[bool] = None
 
     model_config = ConfigDict(
-        use_enum_values=True,  #TODO ← Преобразует enum в строковые значения(кастомный не фурычит)
+        use_enum_values=True,
         populate_by_name=True
     )
 
     @field_validator("passwordRepeat")
     def check_password_repeat(cls, value: str, info) -> str:
-        # Проверяем, совпадение паролей
         if "password" in info.data and value != info.data["password"]:
             raise ValueError("Пароли не совпадают")
         return value

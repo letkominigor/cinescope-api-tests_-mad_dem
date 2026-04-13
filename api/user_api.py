@@ -1,8 +1,6 @@
 from constants.constants import BASE_URL_AUTH
 from custom_requester.custom_requester import CustomRequester
 
-# Этот класс работает с информацией о пользователях
-
 class UserAPI(CustomRequester):
     """Класс для работы с пользователями."""
 
@@ -24,20 +22,7 @@ class UserAPI(CustomRequester):
             expected_status=expected_status
         )
 
-
-    """def get_user_info(self, user_id, expected_status=200):
-        return self.send_request(
-            "GET",
-            f"/user/{user_id}",
-            expected_status=expected_status
-        )"""
-
     def delete_user(self, user_id, expected_status=200):
-        """
-        Удаление пользователя.
-        :param user_id: ID пользователя.
-        :param expected_status: Ожидаемый статус-код.
-        """
         return self.send_request(
             method="DELETE",
             endpoint=f"/user/{user_id}",

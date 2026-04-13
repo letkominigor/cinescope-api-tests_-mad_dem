@@ -1,0 +1,20 @@
+2026-04-12 13:17:57 INFO [32mpytest tests/api/test_user.py::TestUser::test_create_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-12 13:17:57 INFO [32mpytest tests/api/test_user.py::TestUser::test_create_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTg5MDc2LCJleHAiOjE3NzU5OTA4NzZ9.PxBpOTyoTqSLsWcNMBK68-jipxYRaOJeGew64q9Hof8' \
+-H 'Cookie: refresh_token=813e9648-4679-47da-b27c-c6fe3728f3aa' \
+-H 'Content-Length: 181' \
+-d '{"email": "kekf01dvxie@gmail.com", "fullName": "Nicole Gallegos", "password": "&1BhKdap@*j*", "passwordRepeat": "&1BhKdap@*j*", "roles": ["USER"], "verified": true, "banned": false}'

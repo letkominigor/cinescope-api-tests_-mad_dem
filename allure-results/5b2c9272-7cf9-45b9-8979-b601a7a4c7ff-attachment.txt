@@ -1,0 +1,20 @@
+2026-04-12 13:19:08 INFO [32mpytest tests/api/test_user.py::TestUser::test_create_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-12 13:19:08 INFO [32mpytest tests/api/test_user.py::TestUser::test_create_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTg5MTQ3LCJleHAiOjE3NzU5OTA5NDd9.Qvuwf8sZbotvJxO83UnS9euMp3uZizr4sl6vdoa8Yio' \
+-H 'Cookie: refresh_token=de495c06-a4e2-4723-81a3-d5be60fed623' \
+-H 'Content-Length: 176' \
+-d '{"email": "kekikf4ltc0@gmail.com", "fullName": "Jenna Ruiz", "password": "5Unt|ITi9Uea", "passwordRepeat": "5Unt|ITi9Uea", "roles": ["USER"], "verified": true, "banned": false}'

@@ -1,0 +1,54 @@
+2026-04-12 13:19:11 INFO [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_id_common_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-04-12 13:19:11 INFO [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_id_common_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTg5MTUwLCJleHAiOjE3NzU5OTA5NTB9.gOLTMVE9f7zfMx0_tfsYAUdD4qMbewH0v39ptKqEguM' \
+-H 'Cookie: refresh_token=a9889f56-c5ad-4357-8de8-163958ddd43b' \
+-H 'Content-Length: 176' \
+-d '{"email": "kekzl8fj6vc@gmail.com", "fullName": "Jodi Lopez", "password": "P|GYg6nDkZ6B", "passwordRepeat": "P|GYg6nDkZ6B", "roles": ["USER"], "verified": true, "banned": false}' 
+
+2026-04-12 13:19:12 INFO [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_id_common_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 62' \
+-d '{"email": "kekzl8fj6vc@gmail.com", "password": "P|GYg6nDkZ6B"}'
+2026-04-12 13:19:12 INFO [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_id_common_user[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/user/kekzl8fj6vc@gmail.com' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiNTUxN2NjLTVkNjctNDcyZi04Njk4LWY5NTk3MzZmYWNmMyIsImVtYWlsIjoia2Vremw4Zmo2dmNAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTg5MTUxLCJleHAiOjE3NzU5OTA5NTF9.QXdFpsFDaVdz5VVANpbWZ2YFI4MqOknUXNSZJbQ5Vuo' \
+-H 'Cookie: refresh_token=fbc344d9-5055-46c1-a0b0-f77bc0a95177' \
+
+2026-04-12 13:19:12 INFO 	RESPONSE:
+STATUS_CODE: [31m403[0m
+DATA: [31m{"message":"Forbidden resource","error":"Forbidden","statusCode":403}[0m
+2026-04-12 13:19:12 INFO [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_id_common_user (teardown)[0m
+curl -X DELETE 'https://auth.dev-cinescope.coconutqa.ru/user/7b5517cc-5d67-472f-8698-f959736facf3' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc1OTg5MTUwLCJleHAiOjE3NzU5OTA5NTB9.gOLTMVE9f7zfMx0_tfsYAUdD4qMbewH0v39ptKqEguM' \
+-H 'Cookie: refresh_token=a9889f56-c5ad-4357-8de8-163958ddd43b' \
+-H 'Content-Length: 0' \

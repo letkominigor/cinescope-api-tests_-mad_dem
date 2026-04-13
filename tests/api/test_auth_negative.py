@@ -1,92 +1,137 @@
+"""Негативные тесты для авторизации."""
 import pytest
+import allure
 from api.api_manager import ApiManager
-from custom_requester.custom_requester import RequestError
+from constants.constants import STATUS_UNAUTHORIZED
 
 
+@allure.feature("Auth API")
+@allure.story("Авторизация пользователя")
+@allure.label("qa_name", "Komin Igor")
+@allure.label("layer", "api")
 class TestAuthNegative:
     """Негативные тесты для авторизации."""
 
+    @allure.title("Авторизация с неверным паролем")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_login_with_wrong_password(self, api_manager: ApiManager, registered_user):
-        """
-        Тест 1: Авторизация с неверным паролем.
-        Ожидается: 401 или 500 + сообщение об ошибке
-        """
+        """Тест: авторизация с неверным паролем."""
+        # Arrange
         login_data = {
             "email": registered_user.email,
             "password": "WrongPassword123!"
         }
 
-        with pytest.raises(RequestError) as exc_info:
-            api_manager.auth_api.login_user(login_data=login_data, expected_status=200)
+        # Act
+        with allure.step("Пытаемся войти с неверным паролем"):
+            response = api_manager.auth_api.login_user(
+                login_data=login_data,
+                expected_status=STATUS_UNAUTHORIZED
+            )
 
-        assert exc_info.value.response.status_code in [401, 500], \
-            f"Ожидали 401/500, получили {exc_info.value.response.status_code}"
+        # Assert
+        with allure.step("Проверяем статус 401"):
+            assert response.status_code == STATUS_UNAUTHORIZED
 
-        response_data = exc_info.value.response.json()
-        assert "message" in response_data or "error" in response_data, \
-            "В ответе должно быть сообщение об ошибке"
+        with allure.step("Проверяем сообщение об ошибке"):
+            response_data = response.json()
+            assert "message" in response_data or "error" in response_data
 
-
+    @allure.title("Авторизация с несуществующим email")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_login_with_nonexistent_email(self, api_manager: ApiManager):
-        """
-        Тест 2: Авторизация с несуществующим email.
-        Ожидается: 401 + сообщение об ошибке
-        """
+        """Тест: авторизация с несуществующим email."""
+        # Arrange
         login_data = {
-            "email": "nonexistent_user_abc123@test.com",  # Такого пользователя нет
-            "password": "SomeValidPass123!"
+            "email": "nonexistent_user_abc123@test.com",
+            "password": "KakoiToPass123!"
         }
 
-        with pytest.raises(RequestError) as exc_info:
-            api_manager.auth_api.login_user(login_data=login_data, expected_status=200)
+        # Act
+        with allure.step("Пытаемся войти с несуществующим email"):
+            response = api_manager.auth_api.login_user(
+                login_data=login_data,
+                expected_status=STATUS_UNAUTHORIZED
+            )
 
-        assert exc_info.value.response.status_code in [401, 404, 500], \
-            f"Ожидали 401/404/500, получили {exc_info.value.response.status_code}"
+        # Assert
+        with allure.step("Проверяем статус 401"):
+            assert response.status_code == STATUS_UNAUTHORIZED
 
-        response_data = exc_info.value.response.json()
-        assert "message" in response_data or "error" in response_data, \
-            "В ответе должно быть сообщение об ошибке"
+        with allure.step("Проверяем сообщение об ошибке"):
+            response_data = response.json()
+            assert "message" in response_data or "error" in response_data
 
-
+    @allure.title("Авторизация с пустым телом запроса")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_login_with_empty_body(self, api_manager: ApiManager):
-        """
-        Тест 3: Авторизация с пустым телом запроса.
-        Ожидается: 400 или 500 + сообщение об ошибке
-        """
+        """Тест: авторизация с пустым телом запроса."""
+        # Arrange
         login_data = {}
 
-        with pytest.raises(RequestError) as exc_info:
-            api_manager.auth_api.login_user(login_data=login_data, expected_status=200)
+        # Act
+        with allure.step("Пытаемся войти с пустым телом запроса"):
+            response = api_manager.auth_api.login_user(
+                login_data=login_data,
+                expected_status=STATUS_UNAUTHORIZED
+            )
 
-        assert exc_info.value.response.status_code in [400, 401, 500], \
-            f"Ожидали 400/401/500, получили {exc_info.value.response.status_code}"
+        # Assert
+        with allure.step("Проверяем статус 401"):
+            assert response.status_code == STATUS_UNAUTHORIZED
 
-        response_data = exc_info.value.response.json()
-        assert "message" in response_data or "error" in response_data, \
-            "В ответе должно быть сообщение об ошибке"
+        with allure.step("Проверяем сообщение об ошибке"):
+            response_data = response.json()
+            assert "message" in response_data or "error" in response_data
 
-
+    @allure.title("Авторизация с пустым email")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_login_with_empty_email(self, api_manager: ApiManager, registered_user):
         """Тест: авторизация с пустым email."""
+        # Arrange
         login_data = {
             "email": "",
             "password": registered_user.password
         }
 
-        with pytest.raises(RequestError) as exc_info:
-            api_manager.auth_api.login_user(login_data=login_data, expected_status=200)
+        # Act
+        with allure.step("Пытаемся войти с пустым email"):
+            response = api_manager.auth_api.login_user(
+                login_data=login_data,
+                expected_status=STATUS_UNAUTHORIZED
+            )
 
-        assert exc_info.value.response.status_code in [400, 401, 500]
+        # Assert
+        with allure.step("Проверяем статус 401"):
+            assert response.status_code == STATUS_UNAUTHORIZED
 
-
+    @allure.title("Авторизация с пустым паролем")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.api
+    @pytest.mark.negative
     def test_login_with_empty_password(self, api_manager: ApiManager, registered_user):
         """Тест: авторизация с пустым паролем."""
+        # Arrange
         login_data = {
             "email": registered_user.email,
             "password": ""
         }
 
-        with pytest.raises(RequestError) as exc_info:
-            api_manager.auth_api.login_user(login_data=login_data, expected_status=200)
+        # Act
+        with allure.step("Пытаемся войти с пустым паролем"):
+            response = api_manager.auth_api.login_user(
+                login_data=login_data,
+                expected_status=STATUS_UNAUTHORIZED
+            )
 
-        assert exc_info.value.response.status_code in [400, 401, 500]
+        # Assert
+        with allure.step("Проверяем статус 401"):
+            assert response.status_code == STATUS_UNAUTHORIZED

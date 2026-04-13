@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import List, Optional
 from datetime import datetime
 
@@ -39,7 +39,7 @@ class AuthResponse:
     @classmethod
     def from_dict(cls, data: dict, tokens: Optional[dict] = None) -> 'AuthResponse':
         """Создаёт модель из словаря ответа API."""
-        user = data.get('user', data) 
+        user = data.get('user', data)
         return cls(
             user_id=user.get('id'),
             email=user.get('email'),

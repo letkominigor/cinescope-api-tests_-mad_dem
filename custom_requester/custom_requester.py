@@ -24,8 +24,6 @@ class CustomRequester:
     def __init__(self, session, base_url):
         """
         Инициализация кастомного реквестера.
-        :param session: Объект requests.Session.
-        :param base_url: Базовый URL API.
         """
         self.session = session
         self.base_url = base_url
@@ -37,14 +35,6 @@ class CustomRequester:
     def send_request(self, method, endpoint, data=None, expected_status=200, need_logging=True, params=None):
         """
         Универсальный метод для отправки запросов.
-
-        :param method: HTTP метод (GET, POST, PUT, DELETE)
-        :param endpoint: Эндпоинт (например, "/login")
-        :param data: Тело запроса (JSON-данные или Pydantic модель)
-        :param expected_status: Ожидаемый статус-код (по умолчанию 200)
-        :param need_logging: Флаг для логирования (по умолчанию True)
-        :param params: dict с query-параметрами (для GET-запросов)
-        :return: requests.Response объект
         """
         url = f"{self.base_url}{endpoint}"
         if params:
@@ -71,8 +61,6 @@ class CustomRequester:
         """
         Логгирование запросов и ответов. Настройки логгирования описаны в pytest.ini
         Преобразует вывод в curl-like (-H хэдэеры), (-d тело)
-
-        :param response: Объект response получаемый из метода "send_request"
         """
         try:
             request = response.request

@@ -1,5 +1,8 @@
+import datetime
 import random
 import string
+from uuid import uuid4
+
 from faker import Faker
 
 faker = Faker()
@@ -7,6 +10,10 @@ faker = Faker()
 
 class DataGenerator:
     """Генерация тестовых данных."""
+
+    @staticmethod
+    def generate_random_int(min_value: int = 0, max_value: int = 99999) -> int:
+        return random.randint(min_value, max_value)
 
     @staticmethod
     def generate_random_email():
@@ -19,7 +26,6 @@ class DataGenerator:
         """Генерация случайного имени."""
         return f"{faker.first_name()} {faker.last_name()}"
 
-    # utils/data_generator.py
 
     @staticmethod
     def generate_random_password(length=12):
@@ -50,7 +56,7 @@ class DataGenerator:
 
         return ''.join(password_chars)
 
-    @staticmethod
+    """@staticmethod
     def generate_user_data(role="USER"):
         password = DataGenerator.generate_random_password()
         return {
@@ -61,6 +67,51 @@ class DataGenerator:
             "roles": [role],
             "verified": True,
             "banned": False
+        }"""
+
+    @staticmethod
+    def generate_user_data(role: str = "USER", verified: bool = True, banned: bool = False) -> dict:
+        """
+        Генерирует данные пользователя для отправки в API.
+
+        :param role: Роль пользователя
+        :param verified: Статус верификации (по умолчанию True)
+        :param banned: Статус бана (по умолчанию False)
+        :return: dict с данными
+        """
+        password = DataGenerator.generate_random_password()
+
+        return {
+            "email": DataGenerator.generate_random_email(),
+            "fullName": DataGenerator.generate_random_name(),
+            "password": password,
+            "passwordRepeat": password,
+            "roles": [role],
+            "verified": verified,
+            "banned": banned,
+        }
+
+    @staticmethod
+    def generate_user_data_for_db(role: str = "USER") -> dict:
+        """
+        Генерирует данные пользователя для прямой вставки в БД (через SQLAlchemy).
+
+        :param role: Роль пользователя
+        :return: dict с данными в формате БД (snake_case)
+        """
+        password = DataGenerator.generate_random_password()
+        now = datetime.datetime.now()
+
+        return {
+            "id": str(uuid4()),
+            "email": DataGenerator.generate_random_email(),
+            "full_name": DataGenerator.generate_random_name(),
+            "password": password,
+            "created_at": now,
+            "updated_at": now,
+            "verified": False,
+            "banned": False,
+            "roles": role,
         }
 
     @staticmethod
