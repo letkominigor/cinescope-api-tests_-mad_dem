@@ -1,0 +1,37 @@
+2026-04-14 18:12:07 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-04-14 18:12:07 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTI3LCJleHAiOjE3NzYxODEzMjd9.7J9U8Bz-2x3JOauXSlrOPCPKMEzIOeiROXQjLAVGGGw' \
+-H 'Content-Length: 215' \
+-d '{"name": "Movie Partner 1487", "price": 380, "description": "My dog wife beautiful professional recognize.", "imageUrl": "https://picsum.photos/seed/7053/400/600", "location": "MSK", "published": true, "genreId": 2}'
+2026-04-14 18:12:07 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?published=true' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTI3LCJleHAiOjE3NzYxODEzMjd9.7J9U8Bz-2x3JOauXSlrOPCPKMEzIOeiROXQjLAVGGGw' \
+2026-04-14 18:12:08 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/35190' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTI3LCJleHAiOjE3NzYxODEzMjd9.7J9U8Bz-2x3JOauXSlrOPCPKMEzIOeiROXQjLAVGGGw' \
+-H 'Content-Length: 0' \

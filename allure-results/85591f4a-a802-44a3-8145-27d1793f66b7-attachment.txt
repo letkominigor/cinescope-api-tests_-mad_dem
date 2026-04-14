@@ -1,0 +1,24 @@
+2026-04-14 17:57:28 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_with_empty_body (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc4NjQ4LCJleHAiOjE3NzYxODA0NDh9.ZCmqYgBCAeCaFOn1NEy3VN5geulUUV3SaqkVh7JIbAA' \
+-H 'Cookie: refresh_token=c8c6d8f9-13b9-417c-80c3-0c12ef580e80' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-14 17:57:28 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_with_empty_body[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc4NjQ4LCJleHAiOjE3NzYxODA0NDh9.ZCmqYgBCAeCaFOn1NEy3VN5geulUUV3SaqkVh7JIbAA' \
+-H 'Content-Length: 2' \
+
+2026-04-14 17:57:28 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{"message":["name should not be empty","Поле name должно быть строкой","Поле price должно быть числом","Поле description должно быть строкой","Поле location должно быть одним из: MSK, SPB","Поле location должно быть строкой","Поле published должно быть булевым значением","Поле genreId должно быть числом"],"error":"Bad Request","statusCode":400}[0m

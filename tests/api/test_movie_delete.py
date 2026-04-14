@@ -23,7 +23,7 @@ class TestMovieDeleteWithDB:
     def test_delete_movie_by_super_admin(self, super_admin, db_session):
         """Тест удаления фильма супер-админом с проверкой в БД."""
         # Arrange
-        movie_id = random.randint(100000, 999999)
+        movie_id = str(random.randint(100000, 999999))
 
         with allure.step(f"Подготовка: создаём фильм с ID {movie_id} в БД"):
             existing_movie = db_session.query(MovieDBModel).filter(
@@ -41,7 +41,6 @@ class TestMovieDeleteWithDB:
                     published=True,
                     rating=5.0,
                     genre_id="1",
-                    created_at=datetime.now(timezone.utc)
                 )
                 db_session.add(test_movie)
                 db_session.commit()

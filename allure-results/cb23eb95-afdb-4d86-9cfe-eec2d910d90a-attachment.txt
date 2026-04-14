@@ -1,0 +1,44 @@
+2026-04-14 18:12:10 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_delete_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTMwLCJleHAiOjE3NzYxODEzMzB9.tM1OF9APCa68b_0nXrY0SkpMzsuKb8sGyq0PL8V4HZM' \
+-H 'Cookie: refresh_token=6e3d4be6-33fa-4542-854e-f7ce4d619ef7' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-14 18:12:10 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_delete_movie[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTMxLCJleHAiOjE3NzYxODEzMzF9.GWT0dO2Uxg8p3DJMJi6W8em4An5cv7asVipkQ8_MMjA' \
+-H 'Content-Length: 223' \
+-d '{"name": "Movie Special 8367", "price": 1103, "description": "Often quickly process know challenge receive break.", "imageUrl": "https://picsum.photos/seed/3413/400/600", "location": "SPB", "published": false, "genreId": 3}' 
+
+2026-04-14 18:12:11 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_delete_movie[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/35194' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTMxLCJleHAiOjE3NzYxODEzMzF9.GWT0dO2Uxg8p3DJMJi6W8em4An5cv7asVipkQ8_MMjA' \
+-H 'Content-Length: 0' \
+
+2026-04-14 18:12:11 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_delete_movie[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/35194' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTMxLCJleHAiOjE3NzYxODEzMzF9.GWT0dO2Uxg8p3DJMJi6W8em4An5cv7asVipkQ8_MMjA' \
+
+2026-04-14 18:12:11 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m404[0m
+DATA: [31m{"message":"Фильм не найден","error":"Not Found","statusCode":404}[0m

@@ -1,0 +1,31 @@
+2026-04-14 18:22:01 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTIwLCJleHAiOjE3NzYxODE5MjB9.ExFtPFrDr5XRjf0G1JlUHF-vC9_3S2lZ7vbrQ86IYXc' \
+-H 'Cookie: refresh_token=9256092a-e7ae-4b2d-ad74-fac323582bb6' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-14 18:22:01 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTIxLCJleHAiOjE3NzYxODE5MjF9.s3noQFBCKEcxmGOcEieyplCHFZnA0lnENEyBNfU12Z0' \
+-H 'Content-Length: 223' \
+-d '{"name": "Movie Free 4122", "price": 1107, "description": "Staff source Republican organization huge again throw.", "imageUrl": "https://picsum.photos/seed/6150/400/600", "location": "SPB", "published": false, "genreId": 1}' 
+
+2026-04-14 18:22:02 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/35203' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTIxLCJleHAiOjE3NzYxODE5MjF9.s3noQFBCKEcxmGOcEieyplCHFZnA0lnENEyBNfU12Z0' \
+-H 'Content-Length: 0' \

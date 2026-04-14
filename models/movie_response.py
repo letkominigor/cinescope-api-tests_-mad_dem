@@ -1,6 +1,6 @@
 """Pydantic модели для валидации ответов Movies API."""
 from typing import List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict
 
 
 class MovieResponse(BaseModel):
@@ -17,8 +17,7 @@ class MovieResponse(BaseModel):
     createdAt: str
     updatedAt: Optional[str] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class MoviesListResponse(BaseModel):
@@ -26,5 +25,7 @@ class MoviesListResponse(BaseModel):
     movies: List[MovieResponse]
     count: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        arbitrary_types_allowed=True,
+    )

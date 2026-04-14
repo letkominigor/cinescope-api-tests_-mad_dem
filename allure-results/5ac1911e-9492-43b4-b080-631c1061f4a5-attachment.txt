@@ -1,0 +1,37 @@
+2026-04-14 18:21:59 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-04-14 18:21:59 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTIwLCJleHAiOjE3NzYxODE5MjB9.ExFtPFrDr5XRjf0G1JlUHF-vC9_3S2lZ7vbrQ86IYXc' \
+-H 'Content-Length: 239' \
+-d '{"name": "Movie Certainly 9583", "price": 842, "description": "Investment practice manage respond expert big especially staff pay.", "imageUrl": "https://picsum.photos/seed/9107/400/600", "location": "SPB", "published": true, "genreId": 2}'
+2026-04-14 18:22:00 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?published=true' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTIwLCJleHAiOjE3NzYxODE5MjB9.ExFtPFrDr5XRjf0G1JlUHF-vC9_3S2lZ7vbrQ86IYXc' \
+2026-04-14 18:22:00 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/35201' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTIwLCJleHAiOjE3NzYxODE5MjB9.ExFtPFrDr5XRjf0G1JlUHF-vC9_3S2lZ7vbrQ86IYXc' \
+-H 'Content-Length: 0' \

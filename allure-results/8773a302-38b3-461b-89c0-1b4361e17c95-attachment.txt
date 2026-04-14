@@ -1,0 +1,25 @@
+2026-04-14 18:22:11 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_update_nonexistent_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTMwLCJleHAiOjE3NzYxODE5MzB9.ex6epUFBpT232s2JC-L6l6znqp2Rtmd-wCeShpSlEDw' \
+-H 'Cookie: refresh_token=6b45a51f-0748-4a65-aa3e-85bafae290d1' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-14 18:22:11 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_update_nonexistent_movie[0m
+curl -X PATCH 'https://api.dev-cinescope.coconutqa.ru/movies/231419' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTgwMTMxLCJleHAiOjE3NzYxODE5MzF9.m24QS8_0_HqBDqp-Ne9pv1kEBAXgVUWAJujVf1Dv9G4' \
+-H 'Content-Length: 20' \
+-d '{"name": "New Name"}' 
+
+2026-04-14 18:22:11 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m404[0m
+DATA: [31m{"message":"Фильм не найден","error":"Not Found","statusCode":404}[0m
