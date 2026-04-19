@@ -1,0 +1,25 @@
+2026-04-17 14:33:49 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_missing_required_field (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NjI4LCJleHAiOjE3NzY0Mjc0Mjh9.Bb9VtNTgHLigNdRixNN5ovbx-xbDBTtaQKhLtx-jZxI' \
+-H 'Cookie: refresh_token=e705ce4a-0766-44c8-971a-7524b94199ca' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 14:33:49 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_missing_required_field[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NjI5LCJleHAiOjE3NzY0Mjc0Mjl9.swPah5wdxcZut_PXbZjzDzzLJGBdAFgMqH_GMUKLuKA' \
+-H 'Content-Length: 210' \
+-d '{"price": 419, "description": "Generation instead term girl because over order development Democrat.", "imageUrl": "https://picsum.photos/seed/1921/400/600", "location": "MSK", "published": false, "genreId": 3}' 
+
+2026-04-17 14:33:49 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{"message":["name should not be empty","Поле name должно быть строкой"],"error":"Bad Request","statusCode":400}[0m

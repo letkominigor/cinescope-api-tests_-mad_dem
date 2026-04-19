@@ -1,0 +1,18 @@
+2026-04-17 15:06:33 [32mINFO[0m [32mpytest tests/api/test_movie_delete.py::TestMovieDeleteWithDB::test_delete_movie_by_super_admin (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 15:06:34 [32mINFO[0m [32mpytest tests/api/test_movie_delete.py::TestMovieDeleteWithDB::test_delete_movie_by_super_admin[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/410868' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI3NTkzLCJleHAiOjE3NzY0MjkzOTN9.A1s-WEkQtIyapf5hDzwOgJb9sg_ZELsgfZfA04GnU2c' \
+-H 'Content-Length: 0' \

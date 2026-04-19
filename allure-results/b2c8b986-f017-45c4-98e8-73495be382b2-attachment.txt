@@ -1,0 +1,8 @@
+2026-04-17 14:39:04 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_price_range[price_medium][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=500&maxPrice=1000' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1OTQwLCJleHAiOjE3NzY0Mjc3NDB9.7rYYzI-Cio60otWCG5F5cFv0a-APaPjwe35I6IIfHls' \

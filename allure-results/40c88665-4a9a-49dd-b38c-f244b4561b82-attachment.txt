@@ -1,0 +1,31 @@
+2026-04-17 17:36:00 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2NTYwLCJleHAiOjE3NzY0MzgzNjB9.I5GNgAULNCRgLkgzjqlycLGiltbK2BIZWT1DdO1aj3A' \
+-H 'Cookie: refresh_token=e376789c-2e32-4ff2-a99c-4a14025181ea' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 17:36:01 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2NTYxLCJleHAiOjE3NzY0MzgzNjF9.pPKhjts45suNv-hKpzSDQiC4oES2rgB-aOjB_YIRa2Y' \
+-H 'Content-Length: 238' \
+-d '{"name": "Movie Address 2491", "price": 1302, "description": "Surface tough behavior act most style seek health rate write note.", "imageUrl": "https://picsum.photos/seed/3846/400/600", "location": "SPB", "published": false, "genreId": 4}' 
+
+2026-04-17 17:36:01 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_create_movie[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/36291' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2NTYxLCJleHAiOjE3NzY0MzgzNjF9.pPKhjts45suNv-hKpzSDQiC4oES2rgB-aOjB_YIRa2Y' \
+-H 'Content-Length: 0' \

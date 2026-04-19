@@ -1,0 +1,40 @@
+2026-04-17 17:42:17 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_locator (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 17:42:17 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_locator[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2OTM3LCJleHAiOjE3NzY0Mzg3Mzd9.26_NpGq61WVvnvR_EJA7WRIDIpRtdDreNvXXjsNFjiI' \
+-H 'Cookie: refresh_token=6a78a258-98b2-4432-a5e6-2826571e6bfa' \
+-H 'Content-Length: 182' \
+-d '{"email": "kekx9w224gg@gmail.com", "fullName": "William Bradshaw", "password": "^r^N1|2Z6m?N", "passwordRepeat": "^r^N1|2Z6m?N", "roles": ["USER"], "verified": true, "banned": false}' 
+
+2026-04-17 17:42:17 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_locator[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/user/123be2df-8699-4cf4-b28f-f5460922390b' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2OTM3LCJleHAiOjE3NzY0Mzg3Mzd9.26_NpGq61WVvnvR_EJA7WRIDIpRtdDreNvXXjsNFjiI' \
+-H 'Cookie: refresh_token=6a78a258-98b2-4432-a5e6-2826571e6bfa' \
+
+2026-04-17 17:42:17 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_get_user_by_locator[0m
+curl -X GET 'https://auth.dev-cinescope.coconutqa.ru/user/kekx9w224gg@gmail.com' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2OTM3LCJleHAiOjE3NzY0Mzg3Mzd9.26_NpGq61WVvnvR_EJA7WRIDIpRtdDreNvXXjsNFjiI' \
+-H 'Cookie: refresh_token=6a78a258-98b2-4432-a5e6-2826571e6bfa' \

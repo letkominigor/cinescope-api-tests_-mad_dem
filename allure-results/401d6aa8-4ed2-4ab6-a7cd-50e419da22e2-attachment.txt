@@ -1,0 +1,37 @@
+2026-04-17 14:30:16 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-04-17 14:30:16 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE2LCJleHAiOjE3NzY0MjcyMTZ9.Ym1kxraG4A4rutUX_-oyBhHixfHoMDZNbOHwar0YfJA' \
+-H 'Content-Length: 208' \
+-d '{"name": "Movie Happen 5805", "price": 799, "description": "Store write mention war worry Congress.", "imageUrl": "https://picsum.photos/seed/5160/400/600", "location": "MSK", "published": true, "genreId": 4}'
+2026-04-17 14:30:16 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?published=true' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE2LCJleHAiOjE3NzY0MjcyMTZ9.Ym1kxraG4A4rutUX_-oyBhHixfHoMDZNbOHwar0YfJA' \
+2026-04-17 14:30:16 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_published (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/36178' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE2LCJleHAiOjE3NzY0MjcyMTZ9.Ym1kxraG4A4rutUX_-oyBhHixfHoMDZNbOHwar0YfJA' \
+-H 'Content-Length: 0' \

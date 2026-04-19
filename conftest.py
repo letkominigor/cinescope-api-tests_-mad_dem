@@ -1,11 +1,12 @@
 """Фикстуры для тестов."""
 import time
 from typing import Generator
-
+import allure
 import pytest
 import requests
 from faker import Faker
 from sqlalchemy.orm import Session
+
 from api.api_manager import ApiManager
 from constants.roles import Roles
 from db_requester import DBClient
@@ -16,11 +17,18 @@ from utils.data_generator import DataGenerator
 
 faker = Faker()
 
-@pytest.fixture #была добавлена в файл conftest.py
+
+@allure.title("Задержка между повторными попытками")
+@allure.description("Фикстура для добавления delay между ретраями")
+@pytest.fixture
 def delay_between_retries():
     time.sleep(2)
     yield
 
+
+@allure.title("Базовые данные тестового пользователя")
+@allure.description("Генерирует модель TestUser с рандомными данными")
+@allure.feature("Auth")
 @pytest.fixture
 def test_user() -> TestUser:
     """Фикстура: базовые данные пользователя как модель"""
@@ -33,6 +41,10 @@ def test_user() -> TestUser:
         roles=[Roles.USER]
     )
 
+
+@allure.title("Данные для создания пользователя")
+@allure.description("Дополняет test_user полями verified и banned")
+@allure.feature("Auth")
 @pytest.fixture(scope="function")
 def creation_user_data(test_user):
     updated_data = test_user.model_dump()
@@ -43,13 +55,20 @@ def creation_user_data(test_user):
     return updated_data
 
 
+@allure.title("Зарегистрированный пользователь")
+@allure.description("Регистрирует пользователя через API и возвращает модель с ID")
+@allure.feature("Auth")
+@allure.story("Регистрация")
 @pytest.fixture(scope="function")
 def registered_user(api_manager, test_user: TestUser) -> TestUser:
     response = api_manager.auth_api.register_user(user_data=test_user.model_dump())
     response_data = response.json()
-
     return test_user.model_copy(update={"id": response_data["id"]})
 
+
+@allure.title("HTTP-сессия")
+@allure.description("Создаёт и закрывает requests.Session")
+@allure.feature("Infrastructure")
 @pytest.fixture(scope="session")
 def session():
     """Фикстура для создания HTTP-сессии."""
@@ -58,19 +77,24 @@ def session():
     http_session.close()
 
 
+@allure.title("Экземпляр ApiManager")
+@allure.description("Инициализирует ApiManager с переданной сессией")
+@allure.feature("Infrastructure")
 @pytest.fixture(scope="session")
 def api_manager(session):
     """Фикстура для создания экземпляра ApiManager."""
     return ApiManager(session)
 
 
+@allure.title("Авторизация под админом")
+@allure.description("Логинит админа и добавляет токен в заголовки сессии")
+@allure.feature("Movies")
+@allure.story("Авторизация")
+@allure.severity(allure.severity_level.MINOR)
 @pytest.fixture(scope="function")
 def admin_session(api_manager):
     """
     Фикстура: авторизует сессию под админом для тестов фильмов.
-
-    :param api_manager: ApiManager экземпляр
-    :return: api_manager с активным токеном админа
     """
     admin_creds = {
         "email": "api1@gmail.com",
@@ -90,17 +114,15 @@ def admin_session(api_manager):
     return api_manager
 
 
+@allure.title("Созданный фильм")
+@allure.description("Создаёт фильм через API и удаляет после теста (cleanup)")
+@allure.feature("Movies")
+@allure.story("CRUD фильма")
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture(scope="function")
 def created_movie(admin_session):
     """
     Фикстура: создаёт фильм через API и удаляет его после теста.
-
-    :param admin_session: ApiManager с авторизацией под админом
-    :return: dict с данными созданного фильма (id, name, location, и т.д.)
-
-    Пример использования:
-        def test_update_movie(self, created_movie, admin_session):
-            movie_id = created_movie["id"]
     """
     movie_data = DataGenerator.generate_movie_data()
 
@@ -118,13 +140,15 @@ def created_movie(admin_session):
     )
 
 
+@allure.title("Опубликованный фильм")
+@allure.description("Создаёт опубликованный фильм и удаляет после теста")
+@allure.feature("Movies")
+@allure.story("Фильтрация")
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture(scope="function")
 def published_movie(admin_session):
     """
     Фикстура: создаёт опубликованный фильм и удаляет после теста.
-
-    :param admin_session: ApiManager с авторизацией под админом
-    :return: dict с данными созданного фильма
     """
     movie_data = DataGenerator.generate_movie_data(published=True)
     create_response = admin_session.movies_api.create_movie(
@@ -141,6 +165,11 @@ def published_movie(admin_session):
     )
 
 
+@allure.title("Супер-админ пользователь")
+@allure.description("Создаёт сессию и авторизует супер-админа")
+@allure.feature("RBAC")
+@allure.story("Роли пользователей")
+@allure.severity(allure.severity_level.CRITICAL)
 @pytest.fixture
 def super_admin(user_session):
     """Фикстура: супер-админ для тестов."""
@@ -155,12 +184,16 @@ def super_admin(user_session):
     return super_admin
 
 
+@allure.title("Обычный пользователь (USER)")
+@allure.description("Создаёт пользователя с ролью USER через супер-админа")
+@allure.feature("RBAC")
+@allure.story("Роли пользователей")
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture
 def common_user(user_session, super_admin):
     """Фикстура: обычный пользователь для тестов."""
     new_session = user_session()
     user_data = DataGenerator.generate_user_data(role="USER")
-
     common_user = User(
         user_data['email'],
         user_data['password'],
@@ -181,6 +214,11 @@ def common_user(user_session, super_admin):
             pass
 
 
+@allure.title("Пользователь с ролью ADMIN")
+@allure.description("Создаёт пользователя с ролью ADMIN через супер-админа")
+@allure.feature("RBAC")
+@allure.story("Роли пользователей")
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture
 def admin_user(user_session, super_admin):
     """
@@ -188,8 +226,6 @@ def admin_user(user_session, super_admin):
     Генерирует УНИКАЛЬНЫЕ данные каждый раз!
     """
     new_session = user_session()
-
-    # Генерируем уникальные данные прямо здесь
     user_data = DataGenerator.generate_user_data(role="ADMIN")
 
     admin_user = User(
@@ -212,6 +248,10 @@ def admin_user(user_session, super_admin):
         except:
             pass
 
+
+@allure.title("Фабрика пользовательских сессий")
+@allure.description("Создаёт изолированные сессии для разных пользователей")
+@allure.feature("Infrastructure")
 @pytest.fixture
 def user_session():
     """Фикстура для создания изолированных сессий пользователей."""
@@ -228,11 +268,21 @@ def user_session():
     for user in user_pool:
         user.close_session()
 
+
+@allure.title("Данные для регистрации пользователя")
+@allure.description("Конвертирует TestUser в JSON-формат для API")
+@allure.feature("Auth")
 @pytest.fixture
 def registration_user_data(test_user: TestUser) -> dict:
     """Фикстура: данные для регистрации в JSON-формате"""
     return test_user.model_dump(mode='json', exclude_unset=True)
 
+
+@allure.title("Сессия базы данных")
+@allure.description("Предоставляет SQLAlchemy-сессию с авто-commit/rollback")
+@allure.feature("Database")
+@allure.story("Работа с БД")
+@allure.severity(allure.severity_level.BLOCKER)
 @pytest.fixture(scope="function")
 def db_session() -> Generator[Session, None, None]:
     """
@@ -241,4 +291,3 @@ def db_session() -> Generator[Session, None, None]:
     db_client = DBClient()
     with db_client.get_session() as session:
         yield session
-

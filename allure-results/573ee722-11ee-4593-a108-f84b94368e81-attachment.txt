@@ -1,0 +1,107 @@
+2026-04-17 15:17:41 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-04-17 15:17:42 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjYxLCJleHAiOjE3NzY0MzAwNjF9.3hhOTqkhgRdgG2jerA7T_3lsLD1_wmItoV9qFgprwt8' \
+-H 'Cookie: refresh_token=e5400331-234b-4e10-9fd1-9a61520c10b3' \
+-H 'Content-Length: 181' \
+-d '{"email": "kekcegmt83k@gmail.com", "fullName": "William Garcia", "password": "rXx@HGja8BqA", "passwordRepeat": "rXx@HGja8BqA", "roles": ["ADMIN"], "verified": true, "banned": false}' 
+
+2026-04-17 15:17:43 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 62' \
+-d '{"email": "kekcegmt83k@gmail.com", "password": "rXx@HGja8BqA"}' 
+
+2026-04-17 15:17:43 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjYxLCJleHAiOjE3NzY0MzAwNjF9.3hhOTqkhgRdgG2jerA7T_3lsLD1_wmItoV9qFgprwt8' \
+-H 'Cookie: refresh_token=e5400331-234b-4e10-9fd1-9a61520c10b3' \
+-H 'Content-Length: 179' \
+-d '{"email": "kekv3l8a7m1@gmail.com", "fullName": "Sean Williams", "password": "@fG^pwZv68jA", "passwordRepeat": "@fG^pwZv68jA", "roles": ["USER"], "verified": true, "banned": false}' 
+
+2026-04-17 15:18:00 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 62' \
+-d '{"email": "kekv3l8a7m1@gmail.com", "password": "@fG^pwZv68jA"}'
+2026-04-17 15:18:01 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user][0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjYxLCJleHAiOjE3NzY0MzAwNjF9.3hhOTqkhgRdgG2jerA7T_3lsLD1_wmItoV9qFgprwt8' \
+-H 'Content-Length: 205' \
+-d '{"name": "Movie Style 8522", "price": 638, "description": "Lot coach green affect score growth.", "imageUrl": "https://picsum.photos/seed/7222/400/600", "location": "MSK", "published": false, "genreId": 2}' 
+
+2026-04-17 15:18:02 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user][0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/36259' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU2ZjIyOWE4LTNhNmEtNDkyMS05YzZjLTJmYmJhYzg0YmI1ZiIsImVtYWlsIjoia2VrdjNsOGE3bTFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjgwLCJleHAiOjE3NzY0MzAwODB9.XKKEp9UQ-5D1OjcwawucVTUub4VW28h7RS10c_D3zuo' \
+-H 'Content-Length: 0' \
+
+2026-04-17 15:18:02 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m403[0m
+DATA: [31m{"message":"Forbidden resource","error":"Forbidden","statusCode":403}[0m
+2026-04-17 15:18:02 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user][0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/36259' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjYxLCJleHAiOjE3NzY0MzAwNjF9.3hhOTqkhgRdgG2jerA7T_3lsLD1_wmItoV9qFgprwt8' \
+-H 'Content-Length: 0' \
+2026-04-17 15:18:02 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (teardown)[0m
+curl -X DELETE 'https://auth.dev-cinescope.coconutqa.ru/user/e6f229a8-3a6a-4921-9c6c-2fbbac84bb5f' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjYxLCJleHAiOjE3NzY0MzAwNjF9.3hhOTqkhgRdgG2jerA7T_3lsLD1_wmItoV9qFgprwt8' \
+-H 'Cookie: refresh_token=e5400331-234b-4e10-9fd1-9a61520c10b3' \
+-H 'Content-Length: 0' \
+
+2026-04-17 15:18:03 [32mINFO[0m [32mpytest tests/api/test_movie_roles.py::TestMovieDeleteByRole::test_delete_movie_by_role[user] (teardown)[0m
+curl -X DELETE 'https://auth.dev-cinescope.coconutqa.ru/user/98201272-94b6-486f-9e33-b3965739ce81' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4MjYxLCJleHAiOjE3NzY0MzAwNjF9.3hhOTqkhgRdgG2jerA7T_3lsLD1_wmItoV9qFgprwt8' \
+-H 'Cookie: refresh_token=e5400331-234b-4e10-9fd1-9a61520c10b3' \
+-H 'Content-Length: 0' \

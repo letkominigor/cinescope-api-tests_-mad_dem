@@ -1,0 +1,41 @@
+2026-04-17 14:30:18 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_update_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE3LCJleHAiOjE3NzY0MjcyMTd9.uggO5mae0dqWyTJKfE6SrYI5Bx47PQsCbrLWvJJAWrY' \
+-H 'Cookie: refresh_token=49d9e5d2-c276-4d67-a6ee-de920ba1b798' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+2026-04-17 14:30:18 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_update_movie (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE4LCJleHAiOjE3NzY0MjcyMTh9.jUaSaIzzZ3Qbjt5uksedojKCMwwQaR9afTAi0-gN7cc' \
+-H 'Content-Length: 263' \
+-d '{"name": "Movie Realize 7561", "price": 430, "description": "Material grow pretty cover defense including population feel senior born firm short several.", "imageUrl": "https://picsum.photos/seed/6773/400/600", "location": "MSK", "published": false, "genreId": 3}'
+2026-04-17 14:30:18 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_update_movie[0m
+curl -X PATCH 'https://api.dev-cinescope.coconutqa.ru/movies/36181' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE4LCJleHAiOjE3NzY0MjcyMTh9.jUaSaIzzZ3Qbjt5uksedojKCMwwQaR9afTAi0-gN7cc' \
+-H 'Content-Length: 30' \
+-d '{"name": "Updated Movie Name"}'
+2026-04-17 14:30:19 [32mINFO[0m [32mpytest tests/api/test_movie.py::TestMoviesPositive::test_update_movie (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/36181' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1NDE4LCJleHAiOjE3NzY0MjcyMTh9.jUaSaIzzZ3Qbjt5uksedojKCMwwQaR9afTAi0-gN7cc' \
+-H 'Content-Length: 0' \

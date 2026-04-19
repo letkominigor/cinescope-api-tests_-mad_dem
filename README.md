@@ -6,6 +6,8 @@ pytest tests/api/test_movie.py -v -s
 pytest tests/api/test_movie.py::TestMoviesPositive::test_get_movies_filtered_by_location -v -s
 # Запустить все тесты проекта
 pytest tests/api/ -v -s
+
+
 # Запуститьт все тесты с Allure
 pytest tests/ --alluredir=./allure-results
 # Только smoke-тесты
@@ -16,9 +18,7 @@ pytest -m db tests/api/test_other_api.py -v --alluredir=./allure-results
 pytest -k "parametrize" tests/api/test_movie_filters.py -v --alluredir=./allure-results
 # Исключить медленные тесты
 pytest -m "not slow" tests/api/ -v --alluredir=./allure-results
-# Все тесты + генерация Allure отчёта
-pytest tests/api/test_movie_filters.py tests/api/test_user.py tests/api/test_other_api.py -v --alluredir=./allure-results
-allure serve ./allure-results
+
 
 # показать 5 самых медленных тестов
 pytest --durations=5

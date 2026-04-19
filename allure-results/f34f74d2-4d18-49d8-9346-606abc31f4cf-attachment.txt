@@ -1,0 +1,40 @@
+2026-04-17 17:41:31 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_location_with_created_film (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2ODg3LCJleHAiOjE3NzY0Mzg2ODd9.3w6Pagrb1QmiIvITJ4pN_CjwIQlagWcErSaCjFzBc-8' \
+-H 'Cookie: refresh_token=87da58ad-ad18-41c4-af6e-9d8f4cf59172' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 17:41:32 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_location_with_created_film[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2ODkyLCJleHAiOjE3NzY0Mzg2OTJ9.Sfx3JC-VNk9gbJZvK6E0WLxPqa0pIY3FjIzHfvzyeh4' \
+-H 'Content-Length: 213' \
+-d '{"name": "Movie Little 2968", "price": 1986, "description": "Table meeting three act no minute believe.", "imageUrl": "https://picsum.photos/seed/6376/400/600", "location": "MSK", "published": false, "genreId": 1}' 
+
+2026-04-17 17:41:32 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_location_with_created_film[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/36303' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2ODkyLCJleHAiOjE3NzY0Mzg2OTJ9.Sfx3JC-VNk9gbJZvK6E0WLxPqa0pIY3FjIzHfvzyeh4' \
+
+2026-04-17 17:41:32 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_location_with_created_film[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/36303' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2ODkyLCJleHAiOjE3NzY0Mzg2OTJ9.Sfx3JC-VNk9gbJZvK6E0WLxPqa0pIY3FjIzHfvzyeh4' \
+-H 'Content-Length: 0' \

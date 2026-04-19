@@ -1,0 +1,25 @@
+2026-04-17 17:36:09 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_missing_required_field (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2NTY5LCJleHAiOjE3NzY0MzgzNjl9.9bAMxLpoQv2LgaEi01mO_KIDb35Oeta8RXorNbPkGJY' \
+-H 'Cookie: refresh_token=31858b67-b0bd-4416-a2ea-f5b139b0232f' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 17:36:10 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_missing_required_field[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2NTcwLCJleHAiOjE3NzY0MzgzNzB9.hYrkyfneZX_lvPDsENI2aAbZNeE0ZVL9f0vkSZpDDoM' \
+-H 'Content-Length: 212' \
+-d '{"price": 922, "description": "Section near house energy too ok process expect final well describe price.", "imageUrl": "https://picsum.photos/seed/12/400/600", "location": "MSK", "published": true, "genreId": 1}' 
+
+2026-04-17 17:36:10 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{"message":["name should not be empty","Поле name должно быть строкой"],"error":"Bad Request","statusCode":400}[0m

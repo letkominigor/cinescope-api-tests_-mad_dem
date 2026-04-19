@@ -1,0 +1,25 @@
+2026-04-17 14:36:20 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_missing_required_field (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1Nzc5LCJleHAiOjE3NzY0Mjc1Nzl9.fM4OJuF5G7-4AwKGu2YWsDYTSdjI2wWVrSLp5j6pQF8' \
+-H 'Cookie: refresh_token=3e4d2e07-3b7b-4c3f-9bb4-bc42dce8c93e' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 14:36:20 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_create_movie_missing_required_field[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI1Nzc5LCJleHAiOjE3NzY0Mjc1Nzl9.fM4OJuF5G7-4AwKGu2YWsDYTSdjI2wWVrSLp5j6pQF8' \
+-H 'Content-Length: 195' \
+-d '{"price": 348, "description": "Up receive ago fall group whether value herself after.", "imageUrl": "https://picsum.photos/seed/7375/400/600", "location": "SPB", "published": false, "genreId": 4}' 
+
+2026-04-17 14:36:20 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m400[0m
+DATA: [31m{"message":["name should not be empty","Поле name должно быть строкой"],"error":"Bad Request","statusCode":400}[0m

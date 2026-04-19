@@ -1,0 +1,19 @@
+2026-04-17 13:58:41 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_combined_filters (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDIzNTIzLCJleHAiOjE3NzY0MjUzMjN9.PB3ZNwgrQWo6o2zYBGA4ugPQDo0WFgtjXFC902jp-Uc' \
+-H 'Cookie: refresh_token=31162b41-92b5-4b9b-93d7-625718c47f95' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 13:58:41 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_combined_filters[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=1&maxPrice=1000&genreId=3' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDIzNTI0LCJleHAiOjE3NzY0MjUzMjR9.IAEx1i3ilsEqTwLD_AgR0egikTCTS-ZKr4UJKCRfgic' \

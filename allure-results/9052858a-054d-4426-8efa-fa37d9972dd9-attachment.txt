@@ -1,0 +1,13 @@
+2026-04-17 15:06:24 [32mINFO[0m [32mpytest tests/api/test_auth_negative.py::TestAuthNegative::test_login_with_nonexistent_email[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 76' \
+-d '{"email": "nonexistent_user_abc123@test.com", "password": "KakoiToPass123!"}' 
+
+2026-04-17 15:06:24 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m401[0m
+DATA: [31m{"message":"Неверный логин или пароль","error":"Unauthorized","statusCode":401}[0m

@@ -1,0 +1,20 @@
+2026-04-17 17:42:15 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_create_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 17:42:16 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_create_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDM2OTM2LCJleHAiOjE3NzY0Mzg3MzZ9.kfPahLj92od36_5zKp8oBUQy6uuUnbj1r34A58JymNo' \
+-H 'Cookie: refresh_token=7aa6c2f2-68fb-439f-9244-511edd8e89e9' \
+-H 'Content-Length: 177' \
+-d '{"email": "kekxag83ftr@gmail.com", "fullName": "Eric Nelson", "password": "%&xtG$iH57*p", "passwordRepeat": "%&xtG$iH57*p", "roles": ["USER"], "verified": true, "banned": false}'

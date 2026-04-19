@@ -1,0 +1,24 @@
+2026-04-17 15:25:42 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_delete_nonexistent_movie (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4NzQxLCJleHAiOjE3NzY0MzA1NDF9.CnKiQgH13HF9zNA_nePANqb3RR6nsMbN7eVmCItbgOk' \
+-H 'Cookie: refresh_token=75b9b120-27d8-4183-a3f9-df57a45d0f95' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-17 15:25:42 [32mINFO[0m [32mpytest tests/api/test_movie_negative.py::TestMoviesNegative::test_delete_nonexistent_movie[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/880831' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NDI4NzQyLCJleHAiOjE3NzY0MzA1NDJ9.H5g0auDH8g-lHcRA_y7tADAowNZbMdzT_ZYtZFqf_m8' \
+-H 'Content-Length: 0' \
+
+2026-04-17 15:25:42 [32mINFO[0m 	RESPONSE:
+STATUS_CODE: [31m404[0m
+DATA: [31m{"message":"Фильм не найден","error":"Not Found","statusCode":404}[0m
