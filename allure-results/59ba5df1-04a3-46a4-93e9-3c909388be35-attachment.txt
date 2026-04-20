@@ -1,0 +1,29 @@
+2026-04-20 13:41:53 INFO [32mpytest tests/db/test_movies_lifecycle.py::TestMovieLifecycle::test_movie_crud_with_db_validation (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-04-20 13:41:55 INFO [32mpytest tests/db/test_movies_lifecycle.py::TestMovieLifecycle::test_movie_crud_with_db_validation[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NjgxNzE1LCJleHAiOjE3NzY2ODM1MTV9.wep-Ix137ezrCU0T4hxrANBFZXHLq1ClWDCkC6GxS1I' \
+-H 'Content-Length: 228' \
+-d '{"name": "Test Movie DB kek7e3l8dlm@gmail.com", "price": 500, "description": "Avoid describe seem back read that ahead.", "imageUrl": "https://picsum.photos/seed/1823/400/600", "location": "MSK", "published": true, "genreId": 2}' 
+
+2026-04-20 13:41:55 INFO [32mpytest tests/db/test_movies_lifecycle.py::TestMovieLifecycle::test_movie_crud_with_db_validation[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/37784' \
+-H 'User-Agent: python-requests/2.33.1' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2NjgxNzE1LCJleHAiOjE3NzY2ODM1MTV9.wep-Ix137ezrCU0T4hxrANBFZXHLq1ClWDCkC6GxS1I' \
+-H 'Content-Length: 0' \

@@ -18,6 +18,7 @@ class TestMoviesNegative:
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.api
     @pytest.mark.negative
+    @pytest.mark.regression
     def test_get_nonexistent_movie(self, admin_session: ApiManager):
         """Негативный тест: получение фильма с несуществующим ID."""
         # Arrange
@@ -38,6 +39,7 @@ class TestMoviesNegative:
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.api
     @pytest.mark.negative
+    @pytest.mark.regression
     def test_create_movie_with_empty_body(self, admin_session: ApiManager):
         """Негативный тест: создание фильма с пустым телом."""
         # Act
@@ -55,6 +57,7 @@ class TestMoviesNegative:
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.api
     @pytest.mark.negative
+    @pytest.mark.regression
     def test_create_movie_missing_required_field(self, admin_session: ApiManager):
         """Негативный тест: создание без обязательного поля."""
         # Arrange
@@ -76,6 +79,7 @@ class TestMoviesNegative:
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.api
     @pytest.mark.negative
+    @pytest.mark.regression
     def test_update_nonexistent_movie(self, admin_session: ApiManager):
         """Негативный тест: обновление несуществующего фильма."""
         # Arrange
@@ -98,6 +102,7 @@ class TestMoviesNegative:
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.api
     @pytest.mark.negative
+    @pytest.mark.regression
     def test_delete_nonexistent_movie(self, admin_session: ApiManager):
         """Негативный тест: удаление несуществующего фильма."""
         # Arrange
