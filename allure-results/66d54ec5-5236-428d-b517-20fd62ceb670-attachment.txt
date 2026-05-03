@@ -1,8 +1,0 @@
-2026-04-14 18:12:13 [32mINFO[0m [32mpytest tests/api/test_movie_filters.py::TestMovieFilters::test_filter_by_genre_id[genre_1][0m
-curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?genreId=1' \
--H 'User-Agent: python-requests/2.33.1' \
--H 'Accept-Encoding: gzip, deflate' \
--H 'Accept: application/json' \
--H 'Connection: keep-alive' \
--H 'Content-Type: application/json' \
--H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc2MTc5NTMxLCJleHAiOjE3NzYxODEzMzF9.GWT0dO2Uxg8p3DJMJi6W8em4An5cv7asVipkQ8_MMjA' \

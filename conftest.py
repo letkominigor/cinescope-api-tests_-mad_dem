@@ -80,7 +80,7 @@ def session():
 @allure.title("Экземпляр ApiManager")
 @allure.description("Инициализирует ApiManager с переданной сессией")
 @allure.feature("Infrastructure")
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def api_manager(session):
     """Фикстура для создания экземпляра ApiManager."""
     return ApiManager(session)
@@ -93,51 +93,40 @@ def api_manager(session):
 @allure.severity(allure.severity_level.MINOR)
 @pytest.fixture(scope="function")
 def admin_session(api_manager):
-    """
-    Фикстура: авторизует сессию под админом для тестов фильмов.
-    """
+    """Фикстура: авторизует сессию под админом для тестов фильмов."""
     admin_creds = {
         "email": "api1@gmail.com",
         "password": "asdqwe123Q"
     }
-
     response = api_manager.auth_api.login_user(
         login_data=admin_creds,
         expected_status=200
     )
-
     token = response.json()["accessToken"]
     api_manager.auth_api._update_session_headers(
         authorization=f"Bearer {token}"
     )
-
     return api_manager
 
-
 @allure.title("Созданный фильм")
-@allure.description("Создаёт фильм через API и удаляет после теста (cleanup)")
+@allure.description("Создаёт опубликованный фильм и возвращает (данные, api_manager)")
 @allure.feature("Movies")
 @allure.story("CRUD фильма")
 @allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture(scope="function")
-def created_movie(admin_session):
-    """
-    Фикстура: создаёт фильм через API и удаляет его после теста.
-    """
-    movie_data = DataGenerator.generate_movie_data()
+def created_movie_with_session(admin_session):
+    """Фикстура: создаёт ОПУБЛИКОВАННЫЙ фильм и возвращает кортеж (данные, api_manager)."""
+    movie_data = DataGenerator.generate_movie_data(published=True)
 
     create_response = admin_session.movies_api.create_movie(
         movie_data,
         expected_status=201
     )
-    movie_data_response = create_response.json()
+    movie = create_response.json()
 
-    yield movie_data_response
+    yield movie, admin_session
 
-    admin_session.movies_api.delete_movie(
-        movie_data_response["id"],
-        expected_status=200
-    )
+    admin_session.movies_api.delete_movie(movie["id"], expected_status=200)
 
 
 @allure.title("Опубликованный фильм")
@@ -164,6 +153,25 @@ def published_movie(admin_session):
         expected_status=200
     )
 
+
+@allure.title("Опубликованный фильм с сессией API")
+@allure.description("Создаёт фильм и возвращает (данные, ТОТ ЖЕ api_manager)")
+@allure.feature("Movies")
+@pytest.fixture(scope="function")
+def published_movie_with_session(admin_session):
+    movie_data = DataGenerator.generate_movie_data(published=True)
+
+    print(f"Создаем фильм с данными: {movie_data}")
+
+    create_response = admin_session.movies_api.create_movie(
+        movie_data,
+        expected_status=201
+    )
+    movie = create_response.json()
+
+    yield movie, admin_session
+
+    admin_session.movies_api.delete_movie(movie["id"], expected_status=200)
 
 @allure.title("Супер-админ пользователь")
 @allure.description("Создаёт сессию и авторизует супер-админа")
@@ -291,3 +299,5 @@ def db_session() -> Generator[Session, None, None]:
     db_client = DBClient()
     with db_client.get_session() as session:
         yield session
+
+

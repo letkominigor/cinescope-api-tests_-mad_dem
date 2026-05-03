@@ -1,1 +1,0 @@
-{"uuid": "97c2d2ad-2d6b-4be6-99b5-13ca15d8aecb", "children": ["4340a0cf-564c-4853-ab38-877f7134708b"], "befores": [{"name": "db_session", "status": "passed", "steps": [{"name": "Создание сессии БД", "status": "passed", "start": 1776428283059, "stop": 1776428283059}], "start": 1776428283059, "stop": 1776428283059}], "start": 1776428283059, "stop": 1776428283073}

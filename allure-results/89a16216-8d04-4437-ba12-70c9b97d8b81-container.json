@@ -1,1 +1,0 @@
-{"uuid": "8c6dbe0b-ea85-4e2d-af12-4319bcbe79ba", "children": ["dcfe7f9d-b5dc-4db0-be19-d12f22979678"], "befores": [{"name": "Сессия базы данных", "status": "passed", "start": 1776436564509, "stop": 1776436564567}], "afters": [{"name": "Сессия базы данных::0", "status": "passed", "start": 1776436565591, "stop": 1776436565604}], "start": 1776436564509, "stop": 1776436565604}
