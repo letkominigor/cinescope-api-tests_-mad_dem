@@ -3,7 +3,7 @@ from playwright.sync_api import Page
 from tests.ui.pages.page_actions import PageAction
 
 
-class BasePage(PageAction): #Базовая логика доспустимая для всех страниц на сайте
+class BasePage(PageAction):
     def __init__(self, page: Page):
         super().__init__(page)
         self.home_url = "https://dev-cinescope.coconutqa.ru/"
