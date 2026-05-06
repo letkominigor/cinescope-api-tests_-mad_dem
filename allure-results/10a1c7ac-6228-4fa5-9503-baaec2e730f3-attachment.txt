@@ -1,0 +1,39 @@
+2026-05-06 12:08:27 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 181' \
+-d '{"email": "kekm7rr5fxl@gmail.com", "fullName": "Joshua Hernandez", "password": "F57Pw#nvn2Oh", "passwordRepeat": "F57Pw#nvn2Oh", "roles": ["USER"], "verified": null, "banned": null}'
+
+2026-05-06 12:08:28 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+
+2026-05-06 12:08:29 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU4NTA4LCJleHAiOjE3NzgwNjAzMDh9.g8fEvFSONWcHB465ibhZJUWNMdj5t_axH5wUCsXqqkg' \
+-H 'Content-Length: 226' \
+-d '{"name": "Movie About 2677", "price": 1999, "description": "Water vote support six better will least better lay turn.", "imageUrl": "https://picsum.photos/seed/1550/400/600", "location": "SPB", "published": true, "genreId": 1}'
+2026-05-06 12:08:46 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/45681' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU4NTA4LCJleHAiOjE3NzgwNjAzMDh9.g8fEvFSONWcHB465ibhZJUWNMdj5t_axH5wUCsXqqkg' \
+-H 'Content-Length: 0' \

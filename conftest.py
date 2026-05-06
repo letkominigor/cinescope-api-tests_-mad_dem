@@ -301,3 +301,16 @@ def db_session() -> Generator[Session, None, None]:
         yield session
 
 
+@pytest.fixture(scope="function")
+def available_movie_id(admin_session):
+    """Создаёт тестовый фильм и возвращает его ID."""
+    movie_data = DataGenerator.generate_movie_data(published=True)
+    create_response = admin_session.movies_api.create_movie(movie_data, expected_status=201)
+    movie = create_response.json()
+
+    yield movie["id"]
+
+    try:
+        admin_session.movies_api.delete_movie(movie["id"], expected_status=200)
+    except:
+        pass

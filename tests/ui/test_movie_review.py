@@ -1,10 +1,12 @@
-"""Тесты отзывов к фильмам — УПРОЩЁННАЯ ВЕРСИЯ."""
+"""Тесты отзывов к фильмам."""
 import allure
 import pytest
 from playwright.sync_api import Page
+
+from tests.ui.pages.login_page import CinescopeLoginPage
 from utils.data_generator import DataGenerator
-from models.movie_page import MoviePage
-from models.page_object_models import CinescopeLoginPage
+from tests.ui.pages.movie_page import MoviePage
+
 
 
 @allure.feature("UI Tests")
@@ -18,44 +20,33 @@ class TestMovieReview:
     @pytest.mark.smoke
     @pytest.mark.ui
     @pytest.mark.positive
-    def test_add_review_to_movie(self, page: Page, registered_user):
-        """Позитивный тест: авторизованный пользователь оставляет отзыв."""
-        movie_id = 45261
-        random_name = DataGenerator.generate_random_name()
-        random_int = DataGenerator.generate_random_int(1, 100)
-        review_text = f"Отличный фильм! {random_name} #{random_int}"
-        rating = 5
+    @allure.title("Успешное оставление отзыва под фильмом")
+    def test_add_review_to_movie(self, page: Page, registered_user, available_movie_id):
+        movie_id = available_movie_id
 
-        # Авторизация
         with allure.step("Авторизация"):
             login_page = CinescopeLoginPage(page)
             login_page.open()
             login_page.login(registered_user.email, registered_user.password)
             login_page.assert_alert_was_pop_up("Вы вошли в аккаунт")
 
-        # Переход на страницу фильма
         with allure.step(f"Переход на страницу фильма #{movie_id}"):
             movie_page = MoviePage(page, movie_id)
             movie_page.open()
 
-        # Заполнение и отправка отзыва
-        with allure.step(f"Установка рейтинга: {rating}"):
-            movie_page.set_rating(rating)
+        with allure.step("Установка рейтинга: 5"):
+            movie_page.set_rating(5)
 
-        with allure.step(f"Ввод текста: '{review_text[:30]}...'"):
+        review_text = f"Отличный фильм! {DataGenerator.generate_random_name()}"
+
+        with allure.step("Ввод текста: '{review_text[:30]}...'"):
             movie_page.fill_review_text(review_text)
 
         with allure.step("Отправка отзыва"):
             movie_page.submit_review()
 
-        # Минимальная проверка
         with allure.step("Проверка успешной отправки"):
-            movie_page.assert_review_submitted()
+            movie_page.assert_review_submitted(expected_text=review_text)
 
-        # Скриншот
         with allure.step("Скриншот"):
-            allure.attach(
-                page.screenshot(),
-                name="Review submitted",
-                attachment_type=allure.attachment_type.PNG
-            )
+            allure.attach(page.screenshot(), name="Review", attachment_type=allure.attachment_type.PNG)

@@ -1,8 +1,9 @@
 """Тесты страницы регистрации."""
 import allure
 from playwright.sync_api import Page
+
+from tests.ui.pages.register_page import CinescopeRegisterPage
 from utils.data_generator import DataGenerator
-from models.page_object_models import CinescopeRegisterPage
 
 
 @allure.feature("UI Tests")

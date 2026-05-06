@@ -1,0 +1,20 @@
+2026-05-06 12:26:00 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_create_user (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-05-06 12:26:01 [32mINFO[0m [32mpytest tests/api/test_user.py::TestUser::test_create_user[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5NTYxLCJleHAiOjE3NzgwNjEzNjF9.DaAiQ_CVclLJc0ktUQ_i8Q-zO0rZQO8CtXelOI7Fmow' \
+-H 'Cookie: refresh_token=db559a42-355f-466c-b4d0-e35fbf136110' \
+-H 'Content-Length: 177' \
+-d '{"email": "kek40qssi31@gmail.com", "fullName": "Cameron Kim", "password": "GinrjyH2FhB|", "passwordRepeat": "GinrjyH2FhB|", "roles": ["USER"], "verified": true, "banned": false}'

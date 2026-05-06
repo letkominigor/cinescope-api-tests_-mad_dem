@@ -1,0 +1,9 @@
+2026-05-06 12:08:58 INFO [32mpytest tests/ui/test_login_page.py::TestloginPage::test_login_by_ui (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 176' \
+-d '{"email": "kekdci27trq@gmail.com", "fullName": "Greg Garcia", "password": "|hw6qW2SkwHP", "passwordRepeat": "|hw6qW2SkwHP", "roles": ["USER"], "verified": null, "banned": null}'

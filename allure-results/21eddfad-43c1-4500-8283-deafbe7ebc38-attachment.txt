@@ -1,0 +1,39 @@
+2026-05-06 11:35:50 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 175' \
+-d '{"email": "kekz3w3u7gs@gmail.com", "fullName": "Julie Shaw", "password": "fpcF@G7HjT$c", "passwordRepeat": "fpcF@G7HjT$c", "roles": ["USER"], "verified": null, "banned": null}'
+
+2026-05-06 11:35:50 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+
+2026-05-06 11:35:51 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU2NTUxLCJleHAiOjE3NzgwNTgzNTF9.7_UxVoM8N7SSUdKRw1t9MrE7U-fosSe2yoU8g_cU7KU' \
+-H 'Content-Length: 234' \
+-d '{"name": "Movie Role 2567", "price": 170, "description": "Fly network court tax try condition church fact too realize leader.", "imageUrl": "https://picsum.photos/seed/7979/400/600", "location": "MSK", "published": true, "genreId": 3}'
+2026-05-06 11:36:12 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/45660' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU2NTUxLCJleHAiOjE3NzgwNTgzNTF9.7_UxVoM8N7SSUdKRw1t9MrE7U-fosSe2yoU8g_cU7KU' \
+-H 'Content-Length: 0' \

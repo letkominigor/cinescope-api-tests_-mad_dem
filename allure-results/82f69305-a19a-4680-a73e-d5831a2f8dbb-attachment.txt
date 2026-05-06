@@ -1,0 +1,5 @@
+Создаем фильм с данными: {'name': 'Movie Development 3042', 'price': 1962, 'description': 'Republican since himself much move painting special court professor.', 'imageUrl': 'https://picsum.photos/seed/456/400/600', 'location': 'SPB', 'published': True, 'genreId': 3}
+Обновляем фильм 45692 с данными: {'name': 'Updated Movie Name', 'description': 'Republican since himself much move painting special court professor.', 'price': 1962, 'location': 'SPB', 'imageUrl': 'https://picsum.photos/seed/456/400/600', 'published': True, 'genreId': 3}
+Ошибка при обновлении: Unexpected status code: 404. Expected: 200
+Статус: 404
+Ответ: {'message': 'Фильм не найден', 'error': 'Not Found', 'statusCode': 404}

@@ -1,0 +1,31 @@
+2026-05-06 11:02:05 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 178' \
+-d '{"email": "kekgmb4u1nj@gmail.com", "fullName": "Jeanne Guzman", "password": "sLSY10M*u*9&", "passwordRepeat": "sLSY10M*u*9&", "roles": ["USER"], "verified": null, "banned": null}'
+
+2026-05-06 11:02:06 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?published=True&limit=1' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+
+2026-05-06 11:02:06 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 235' \
+-d '{"name": "Movie Simply 5350", "price": 1742, "description": "War know positive keep who attack prepare agent group quite draw.", "imageUrl": "https://picsum.photos/seed/9273/400/600", "location": "SPB", "published": true, "genreId": 4}'
+
+2026-05-06 11:02:06 INFO 	RESPONSE:
+STATUS_CODE: [31m401[0m
+DATA: [31m{"message":"Unauthorized","statusCode":401}[0m

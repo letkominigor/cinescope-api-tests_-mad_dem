@@ -1,0 +1,39 @@
+2026-05-06 12:19:21 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 179' \
+-d '{"email": "keke4j8y7ik@gmail.com", "fullName": "Sharon Maynard", "password": "NUon&m:Z3UC0", "passwordRepeat": "NUon&m:Z3UC0", "roles": ["USER"], "verified": null, "banned": null}'
+
+2026-05-06 12:19:21 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+
+2026-05-06 12:19:22 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5MTYyLCJleHAiOjE3NzgwNjA5NjJ9.lBcPxw7itcn1eMhkwl3UqcnJsNDJq2WMU4r-aQg5vBk' \
+-H 'Content-Length: 240' \
+-d '{"name": "Movie Boy 2605", "price": 1771, "description": "Party little factor long develop whatever model spend either area moment.", "imageUrl": "https://picsum.photos/seed/6770/400/600", "location": "MSK", "published": true, "genreId": 1}'
+2026-05-06 12:19:40 INFO [32mpytest tests/ui/test_movie_review.py::TestMovieReview::test_add_review_to_movie[chromium] (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/45687' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5MTYyLCJleHAiOjE3NzgwNjA5NjJ9.lBcPxw7itcn1eMhkwl3UqcnJsNDJq2WMU4r-aQg5vBk' \
+-H 'Content-Length: 0' \

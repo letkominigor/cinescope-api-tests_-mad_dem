@@ -1,0 +1,1 @@
+{"uuid": "ee5583a4-f533-44a1-a9b8-8a88ac1f8983", "children": ["5b2aca7e-83d0-4170-a55d-7375da0c1d13"], "befores": [{"name": "HTTP-сессия", "status": "passed", "start": 1778056849151, "stop": 1778056849151}], "afters": [{"name": "HTTP-сессия::0", "status": "passed", "start": 1778056866036, "stop": 1778056866040}], "start": 1778056849151, "stop": 1778056866040}

@@ -1,0 +1,31 @@
+2026-05-06 12:26:08 [32mINFO[0m [32mpytest tests/db/test_movies_lifecycle.py::TestMovieLifecycle::test_movie_crud_with_db_validation (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5NTM2LCJleHAiOjE3NzgwNjEzMzZ9.2RkfZPQV2wZtgQFa9_ZC0-IpmFBYIGYzTiFfYWrVgFQ' \
+-H 'Cookie: refresh_token=8308baa9-45cf-426c-bc00-38d213ec8574' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}'
+2026-05-06 12:26:10 [32mINFO[0m [32mpytest tests/db/test_movies_lifecycle.py::TestMovieLifecycle::test_movie_crud_with_db_validation[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5NTY4LCJleHAiOjE3NzgwNjEzNjh9.k92_tSqhG_hgzj488ZGQevedbwnArXxAlqofWoaHGVA' \
+-H 'Content-Length: 222' \
+-d '{"name": "Test Movie DB kekc312j3tq@gmail.com", "price": 500, "description": "Relationship try rest major kid he.", "imageUrl": "https://picsum.photos/seed/7569/400/600", "location": "MSK", "published": true, "genreId": 2}'
+
+2026-05-06 12:26:11 [32mINFO[0m [32mpytest tests/db/test_movies_lifecycle.py::TestMovieLifecycle::test_movie_crud_with_db_validation[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/45698' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5NTY4LCJleHAiOjE3NzgwNjEzNjh9.k92_tSqhG_hgzj488ZGQevedbwnArXxAlqofWoaHGVA' \
+-H 'Content-Length: 0' \

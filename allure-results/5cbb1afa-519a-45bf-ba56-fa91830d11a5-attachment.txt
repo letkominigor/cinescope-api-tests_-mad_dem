@@ -1,0 +1,11 @@
+2026-05-06 12:26:12 [32mINFO[0m [32mpytest tests/ui/test_login_page.py::TestloginPage::test_login_by_ui (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/register' \
+-H 'User-Agent: python-requests/2.33.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczNDk2NGVjLTRkNmEtNDc4OS04MzlmLTc1Nzk3MTQxZTczZSIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzc4MDU5NTY4LCJleHAiOjE3NzgwNjEzNjh9.k92_tSqhG_hgzj488ZGQevedbwnArXxAlqofWoaHGVA' \
+-H 'Cookie: refresh_token=9a1a9a26-f1c3-4743-b996-39afb119f345' \
+-H 'Content-Length: 177' \
+-d '{"email": "kekmolcm9u5@gmail.com", "fullName": "Mariah Davis", "password": "zG$vLlu9odtK", "passwordRepeat": "zG$vLlu9odtK", "roles": ["USER"], "verified": null, "banned": null}'

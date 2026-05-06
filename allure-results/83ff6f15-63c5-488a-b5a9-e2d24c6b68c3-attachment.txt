@@ -1,0 +1,23 @@
+
+================================================================================
+🔍 DEBUG: assert_review_submitted()
+🔍 Ожидаемый текст: 'Отличный фильм! Joshua Roth...'
+================================================================================
+
+🔍 Поиск элементов с 'review'/'comment' в классе:
+   Найдено кандидатов: 0
+
+🔍 Поиск секции отзывов по заголовку 'Отзывы':
+   Текст секции: 'Отзывы:Mark SantosОтличный фильм! Joshua RothРейтинг: 5/5'
+
+🔍 Preview body страницы:
+   'CinescopeВсе фильмыMПрофильMovie The 3164Sea maintain for man perform foot them eye avoid approach.Жанр: ДрамаРейтинг: 5/5Купить билет1235 руб.Отзывы:Mark SantosОтличный фильм! Joshua RothРейтинг: 5/5(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])self.__next_f.push([1,"1:HL[\"/_next/static/media/0a86735c6520d94f-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/css/a551a1d8563deda6.css\",\"style\"]\n0:\"$L3\"\n"])self.__next_f.p'
+
+🔍 Поиск ожидаемого текста на странице:
+   Найдено вхождений 'Отличный фильм! Josh': 1
+   [0] <p> class='overflow-hidden text-ellipsis ...' text='Отличный фильм! Joshua Roth'
+
+📸 Скриншот сохранён: debug_review_1778056862.png
+================================================================================
+
+✅ Текст найден на странице (фоллбэк)
